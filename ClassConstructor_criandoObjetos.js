@@ -139,12 +139,101 @@ c1.info()
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
 
-//Exemplo 3: 
+//Exemplo 3: Utilizando mebros Static.
+
+/*
+Os mebros estáticos pertencem à classe em si e não a instâncias específicas da classe.
+Perceba que a invocar-lo você não chama a instancia e sim a classe.
+*/
+
+class Npc{
+    static alerta=false
+    constructor(energia){
+        this.energia=energia
+    }
+    info=function(){
+        console.log(`Energia: ${this.energia}`)
+        console.log(`Alerta: ${(Npc.alerta?"Sim":"Não")}`)
+        console.log("------------------------------------")
+    }
+    static alertar=function(){
+        Npc.alerta=true
+    }
+}
+
+const npc1= new Npc(100)
+const npc2= new Npc(80)
+const npc3= new Npc(30)
+
+Npc.alertar()
+
+npc1.info()
+npc2.info()
+npc3.info()
+
+/*
+Os membros estáticos, sejam eles métodos ou propriedades, 
+pertencem à classe como um todo, em oposição às instâncias específicas da classe. 
+Eles são compartilhados entre todas as instâncias da classe e são chamados diretamente na classe, 
+não em instâncias individuais.
+*/
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
 
-//Exemplo 4: 
+//Exemplo 4: Utilizando Prototype para adicionar propriedades e metodos.
+
+/*
+A propriedade prototype é usada para adicionar propriedades e 
+métodos que podem ser compartilhados por todas as instâncias criadas a partir dessa função construtora.
+*/
+
+class Nave {
+    constructor(energia) {
+      this.energia = energia;
+      this.disparos = 3;
+    }
+}
+  
+const n1= new Nave(100)
+  
+Nave.prototype.vidas=3
+Nave.prototype.disparar=function(){
+    if(this.disparos > 0){
+      this.disparos--
+    }
+}
+  
+n1.disparar()
+n1.disparar()
+n1.disparar()
+  
+console.log(Nave)
+console.log(Nave.prototype) //OBSERVE
+console.log(n1) //OBSERVE
+console.log(n1.vidas)
+console.log(n1.disparos)
+  
+/*OBSERVE OS 2 COMENTARIOS ACIMA:
+  Observe que ao usar console.log em n1, os novos membros criados pelo prototype não serão exibidos diretamente na instância. 
+  Isso ocorre porque esses membros estão associados ao prototype da classe(Nave) em geral, não a instâncias individuais. 
+  Para visualizá-los, é necessário acessá-los através do prototype da classe, como em Nave.prototype. 
+*/
+  
+/*
+  A propriedade prototype permite compartilhar métodos entre todas as instâncias criadas a partir da mesma função construtora. 
+  É uma maneira eficiente de evitar a duplicação de métodos em cada instância e economizar espaço na memória.
+  
+  Portanto, o prototype é uma propriedade especial que pertence à função construtora e não a uma instância específica. 
+  Ela permite que você defina métodos que estão disponíveis para todas as instâncias criadas a partir dessa função.
+  
+  RESUMINDO:
+  Os métodos e propriedades criados usando a propriedade prototype pertencem à função construtora, 
+  não a instâncias específicas. Eles são compartilhados por todas as instâncias criadas a partir dessa função construtora, 
+  o que os torna acessíveis a todas as instâncias, mas eles ainda pertencem à classe em geral.
+*/
+
+
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
