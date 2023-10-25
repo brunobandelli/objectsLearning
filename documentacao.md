@@ -150,6 +150,7 @@ Object.defineProperties(objeto, descritores)
 Object.preventExtensions(objeto)
 Object.seal(objeto)
 Object.freeze(objeto)
+Getters e Setters
 
 *Métodos de Introspecção.:
 Esses métodos ajudam a obter informações sobre propriedades de um objeto.
