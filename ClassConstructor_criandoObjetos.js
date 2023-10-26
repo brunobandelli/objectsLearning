@@ -238,45 +238,7 @@ console.log(n1.disparos)
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
 
-//Exemplo 5: Encapsulamento com #
-
-/*
-O uso do símbolo # para criar propriedades privadas oferece uma maneira mais segura de encapsular dados em uma classe, 
-tornando essas propriedades inacessíveis de fora da classe, o que ajuda a garantir a integridade e a segurança dos dados.
-
-Antigamente, era comum usar o caractere sublinhado _ como uma convenção para indicar propriedades privadas. 
-No entanto, essa prática era principalmente simbólica e não fornecia uma proteção real contra o acesso externo. 
-O sublinhado servia principalmente para comunicar a outros desenvolvedores que se tratava de uma propriedade privada.
-
-É importante observar que o símbolo # é projetado para criar campos de classe privados e não pode ser aplicado a métodos. 
-Para métodos privados, a convenção mais comum é usar o sublinhado _ como prefixo, 
-mas tenha em mente que isso é uma prática de nomenclatura e não fornece proteção real contra acesso externo.
-
-Em resumo, a principal diferença entre o uso de sublinhados _ e o símbolo #:
-Os sublinhados são uma convenção que indica que uma propriedade é considerada privada,mas não impede o acesso direto a ela.
-Enquanto o símbolo # oferece uma verdadeira encapsulação, tornando as propriedades de classe inacessíveis a partir do exterior da classe."
-*/
-
-class PessoaComCerquilha {
-    #nome; // Propriedade privada
-  
-    constructor(nome) {
-      this.#nome = nome;
-    }
-  
-    getNome() {
-      return this.#nome;
-    }
-  }
-  
-  const pessoa2 = new PessoaComCerquilha("Bob");
-//   console.log(pessoa2.#nome); // Isso gera um erro, pois #nome é privado
-  console.log(pessoa2.getNome()); // Acesso através de método (recomendado)
-  
-/* 
-O uso de # torna a propriedade #nome verdadeiramente privada e inacessível fora da classe.
-Sendo possivel acessar apenas de forma indireta através de um metodo, como nesse caso: getNome().
-*/
+//Exemplo 5: 
   
 
 /*------------------------------------------------------------------------------------------------------------------------*/
