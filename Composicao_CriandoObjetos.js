@@ -13,9 +13,9 @@ class Motor {
     desligar() {
       console.log("Motor desligado.");
     }
-  }
+}
   
-  class Carro {
+class Carro {
     constructor() {
       this.motor = new Motor();
     }
@@ -29,11 +29,11 @@ class Motor {
       console.log("Carro parado.");
       this.motor.desligar();
     }
-  }
+}
   
-  const meuCarro = new Carro();
-  meuCarro.dirigir();
-  meuCarro.parar();
+const meuCarro = new Carro();
+meuCarro.dirigir();
+meuCarro.parar();
   
 
 /*
