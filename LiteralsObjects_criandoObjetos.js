@@ -1,3 +1,5 @@
+/*OBJETOS LITERIAS*/
+
 const Pessoa={
     nome:"",
     idade:"",

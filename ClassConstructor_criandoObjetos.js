@@ -53,7 +53,30 @@ Instância (objeto): A casa real construída com base na planta e nas especifica
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 1")
 
-//Exemplo 2: Criando objetos com classes construtoras, parametros e metodos.
+//Exemplo 2: Criando objetos com classes construtoras, parametros e medotos, exemplo simples.
+
+class Individuo {
+    constructor(nome, idade) {
+      this.nome = nome;
+      this.idade = idade;
+    }
+  
+    saudacao() {
+      console.log(`Olá, meu nome é ${this.nome} e eu tenho ${this.idade} anos.`);
+    }
+  }
+  
+  // Criar uma instância da classe Pessoa
+  const Individuo1 = new Individuo("Alice", 30);
+  
+  // Usar o método da classe
+  Individuo1.saudacao(); // Saída: Olá, meu nome é Alice e eu tenho 30 anos.
+  
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
+
+
+//Exemplo 3: Criando objetos com classes construtoras, parametros e metodos.
 
 class Carro {
     canal="Youtube"
@@ -137,9 +160,9 @@ c1.info()
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
 
-//Exemplo 3: Utilizando membros Static.
+//Exemplo 4: Utilizando membros Static.
 
 /*
 Os mebros estáticos pertencem à classe em si e não a instâncias específicas da classe.
@@ -179,9 +202,9 @@ não em instâncias individuais.
 */
 
 /*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
 
-//Exemplo 4: Utilizando Prototype para adicionar propriedades e metodos.
+//Exemplo 5: Utilizando Prototype para adicionar propriedades e metodos.
 
 /*
 A propriedade prototype é usada para adicionar propriedades e 
@@ -236,16 +259,4 @@ console.log(n1.disparos)
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
-
-//Exemplo 5: 
-  
-
-/*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
-
-//Exemplo 6: 
-
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 6")
