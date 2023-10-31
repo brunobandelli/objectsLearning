@@ -5,6 +5,7 @@ Métodos de Introspecção.
 Esses métodos ajudam a obter informações sobre propriedades de um objeto.
 */
 
+/*VEJA OS EXEMPLOS*/
 
 /*"Chaves do Objeto"*/
 /*
