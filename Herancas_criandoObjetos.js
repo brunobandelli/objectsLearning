@@ -1,5 +1,14 @@
 /*CRIANDO OBJETOS COM CLASSES CONSTRUTORAS E HERANÇAS */
 
+/*
+Herança:
+As classes oferecem uma sintaxe mais clara para definir herança. 
+Você pode estender outras classes usando a palavra-chave extends e 
+usar o método super() para chamar o construtor da classe pai.
+*/
+
+
+
 class Carro{ //Classe PAI / BASE
     constructor(nome,portas){
         this.nome=nome

@@ -1,14 +1,55 @@
 /*CRIANDO OBJETOS COM CLASSES CONSTRUTORAS */
 
-/*Sintaxe:
-As classes foram introduzidas no ECMAScript 6 (ES6) e fornecem uma sintaxe mais orientada a objetos. 
-Você pode usar a palavra-chave class para definir uma classe e usar o método constructor para definir o construtor da classe.
+/*
+As classes construtoras são usadas para criar objetos com propriedades e métodos.
+Foram introduzidas no ECMAScript 6 (ES6) e fornecem uma sintaxe mais orientada a objetos. 
 A sintaxe é mais declarativa e semelhante a outras linguagens de programação orientada a objetos.
+
+Sintaxe basica:
+
+class NomeDaClasse {
+  // Método especial chamado construtor para inicializar o objeto
+  constructor(parametro1, parametro2) {
+    this.propriedade1 = parametro1;
+    this.propriedade2 = parametro2;
+  }
+
+  // Métodos da classe
+  metodo1() {
+    // Código do método
+  }
+
+  metodo2() {
+    // Código do método
+  }
+}
+
+// Instanciando a classe
+const minhaInstancia = new NomeDaClasse("Valor 1", "Valor 2");
+
+
+DEFINIÇÃO:
+*class NomeDaClasse: define uma nova classe com o nome especificado.
+
+*O método especial constructor: é usado para inicializar um objeto quando é criado a partir da classe. 
+Ele recebe os parâmetros que podem ser usados para definir as propriedades do objeto.
+
+*Dentro do constructor: as propriedades do objeto são definidas usando a palavra-chave this.
+
+*Os métodos da classe: são definidos após o constructor. 
+Eles são funções que podem ser chamadas em instâncias da classe para realizar ações ou operações específicas.
+
+*Criação de uma Instância: Use o operador new seguido pelo nome da classe para criar uma instância da classe. 
+Você pode passar os valores desejados como argumentos para o construtor. 
+
+
+
 
 Herança:
 As classes oferecem uma sintaxe mais clara para definir herança. 
 Você pode estender outras classes usando a palavra-chave extends e 
 usar o método super() para chamar o construtor da classe pai.
+(VEJA NO ARQUIVO Herancas_criandoObjetos.js)
 */
 
 
