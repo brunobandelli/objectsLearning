@@ -62,6 +62,21 @@ O segundo argumento, { som: { value: "Miado" } }, são as propriedades adicionai
 Portanto, o animal é o protótipo (objeto de destino) e o { som: { value: "Miado" } } é o objeto de origem que adiciona propriedades ao gato.
 */
   
+//Outro exemplos
+
+const formaGeometrica = {
+  tipo: "Desconhecido"
+};
+
+const retangulo = Object.create(formaGeometrica, {
+  largura: { value: 10 },
+  altura: { value: 5 }
+});
+
+console.log(retangulo.tipo); // "Desconhecido"
+console.log(retangulo.largura); // 10
+console.log(retangulo.altura); // 5
+
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("------------------------------------------------------------------------------------------------------.create")
@@ -82,11 +97,38 @@ const produto = {};
 
 Object.defineProperty(produto, 'nome', {
   value: "Camiseta",
-  writable: false
+  writable: false  //Aqui define se a propriedade pode ser modificada (true) ou é somente leitura (false).
 });
 
 console.log(produto.nome); // "Camiseta"
 produto.nome = "Calça"; // Isso não terá efeito devido à propriedade não ser gravável
+
+/*
+Os descritores disponíveis são:
+
+value: O valor da propriedade.
+writable: Indica se a propriedade pode ser modificada (true) ou é somente leitura (false).
+enumerable: Indica se a propriedade será enumerável em loops (for...in).
+configurable: Indica se a propriedade pode ser reconfigurada ou excluída.
+get: Uma função para obter o valor da propriedade (getter).
+set: Uma função para definir o valor da propriedade (setter).
+*/
+
+//Outro exemplo:
+
+const pessoaDP = {
+  nome: "Alice",
+  idade: 30
+};
+
+Object.defineProperty(pessoaDP, 'sobrenome', {
+  value: "Smith",
+  enumerable: false //Aqui define se a propriedade será enumerável em loops (for...in)
+});
+
+for (const propriedade in pessoaDP) {
+  console.log(propriedade + ": ", pessoaDP[propriedade]); // "nome" e "idade", mas não "sobrenome"
+}
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -112,6 +154,32 @@ Object.defineProperties(livro, {
 
 console.log(livro.título); // "Aventuras de Sherlock Holmes"
 console.log(livro.autor); // "Arthur Conan Doyle"
+
+/*
+Os descritores disponíveis são:
+
+value: O valor da propriedade.
+writable: Indica se a propriedade pode ser modificada (true) ou é somente leitura (false).
+enumerable: Indica se a propriedade será enumerável em loops (for...in).
+configurable: Indica se a propriedade pode ser reconfigurada ou excluída.
+get: Uma função para obter o valor da propriedade (getter).
+set: Uma função para definir o valor da propriedade (setter).
+*/
+
+//Outro Exemplo:
+
+const pessoaDPC = {};
+
+Object.defineProperties(pessoaDPC, {
+  nome: { value: "Maria", configurable: false },//Impedira qualquer tipo de alteração.
+  idade: { value: 30, configurable: true }//Permitira as alterações.
+});
+
+pessoaDPC.idade = 35; // Isso funcionará, a propriedade 'idade' é configurável
+delete pessoaDPC.nome; // Isso não funcionará, a propriedade 'nome' não é configurável
+pessoaDPC.nome = "Joana"; // Isso não funcionará, a propriedade 'nome' não é configurável
+console.log(pessoaDPC.idade)
+console.log(pessoaDPC.nome)
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -155,11 +223,11 @@ mas ainda permitir modificações nas propriedades existentes.
 const pessoa = { nome: "Maria", idade: 30 };
 Object.seal(pessoa);
 
-delete pessoa.nome; // Isso não funcionará
+delete pessoa.nome; // Remoção, não funcionará.
 console.log(pessoa.nome)
-pessoa.endereco = "123 Rua Principal"; // Isso não funcionará
+pessoa.endereco = "123 Rua Principal"; // Adição, não funcionará.
 console.log(pessoa.endereco)
-pessoa.idade = 35; // Isso funciona
+pessoa.idade = 35; // Alteração, sim funcionará.
 console.log(pessoa.idade)
 
 
@@ -180,9 +248,11 @@ objeto: O objeto que está sendo "congelado" para impedir qualquer modificação
 const dados = { altura: 180, peso: 75 };
 Object.freeze(dados);
 
-delete dados.altura; // Isso não funcionará
+delete dados.altura; // Remoção, não funcionará.
 console.log(dados.altura)
-dados.peso = 80; // Isso não funcionará
+dados.idade = 20 // Adição, não funcionará.
+console.log(dados.comprimento)
+dados.peso = 80; // Alteração, não funcionará.
 console.log(dados.peso)
 
 

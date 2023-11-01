@@ -8,9 +8,11 @@ Esses métodos ajudam a obter informações sobre propriedades de um objeto.
 /*VEJA OS EXEMPLOS*/
 
 /*"Chaves do Objeto"*/
+//Retorna um array das chaves (nomes das propriedades) de um objeto.
 /*
+Semântica: 
+
 Object.keys(objeto)
-Retorna um array das chaves (nomes das propriedades) de um objeto.
 */
 
 const pessoa = {
@@ -28,9 +30,11 @@ console.log(chaves); // ["nome", "idade", "profissao"]
 console.log("--------------------------------------------------------------------------------------------------------.keys")
 
 /*"Valores do Objeto" */
+//Retorna um array dos valores das propriedades de um objeto.
 /*
+Semântica: 
+
 Object.values(objeto)
-Retorna um array dos valores das propriedades de um objeto.
 */
 
 const carro = {
@@ -49,9 +53,11 @@ console.log(valores); // ["Toyota", "Camry", 2022]
 console.log("------------------------------------------------------------------------------------------------------.values")
 
 /*"Entradas do Objeto"*/
+//Retorna um array de pares chave-valor das propriedades de um objeto.
 /*
+Semântica: 
+
 Object.entries(objeto)
-Retorna um array de pares chave-valor das propriedades de um objeto.
 */
 
 const fruta = {
@@ -68,9 +74,11 @@ console.log(entradas); // [["nome", "Maçã"], ["cor", "Vermelha"], ["sabor", "D
 console.log("-----------------------------------------------------------------------------------------------------.entries")
 
 /*"Obter Nomes de Propriedade do Objeto" */
+//Retorna um array com os nomes das propriedades próprias do objeto (não inclui propriedades herdadas).
 /*
+Semântica: 
+
 Object.getOwnPropertyNames(objeto)
-Retorna um array com os nomes das propriedades próprias do objeto (não inclui propriedades herdadas).
 */
 
 function Animal(nome) {
@@ -90,13 +98,15 @@ console.log(propriedades); // ["nome"]
 console.log("-----------------------------------------------------------------------------------------.getOwnPropertyNames")
 
 /*"Obter Símbolos de Propriedade do Objeto" */
+//Retorna um array com os símbolos das propriedades próprias do objeto (não inclui propriedades de texto e propriedades herdadas).
 /*
+Semântica: 
+
 Object.getOwnPropertySymbols(objeto)
-Retorna um array com os símbolos das propriedades próprias do objeto (não inclui propriedades de texto).
 */
 
 const simbolo1 = Symbol("descricao");
-const simbolo2 = Symbol("outraDescricao");
+const simbolo2 = Symbol("outra Descricao");
 
 const objeto = {
   [simbolo1]: "Valor 1",
@@ -106,14 +116,30 @@ const objeto = {
 const simbolos = Object.getOwnPropertySymbols(objeto);
 console.log(simbolos); // [Symbol(descricao), Symbol(outraDescricao)]
 
+//Outro Exemplo:
+
+const chaveTexto = "minhaChaveTexto";
+const chaveSimbolo = Symbol("minhaChaveSimbolo");
+
+const objetoS = {
+  [chaveTexto]: "Esta é uma propriedade de texto",
+  [chaveSimbolo]: "Esta é uma propriedade de símbolo"
+};
+
+const propriedadesS = Object.getOwnPropertySymbols(objetoS);
+
+console.log(propriedadesS); // [Symbol(minhaChaveSimbolo)]
+
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("---------------------------------------------------------------------------------------.getOwnPropertySymbols")
 
 /*"Obter Descritor de Propriedade do Objeto" */
+//Retorna um objeto com informações sobre a propriedade, como se ela é gravável, enumerável e configurável.
 /*
+Semântica: 
+
 Object.getOwnPropertyDescriptor(objeto, propriedade)
-Retorna um objeto com informações sobre a propriedade, como se ela é gravável, enumerável e configurável.
 */
 
 const pessoaDescriptor = {
