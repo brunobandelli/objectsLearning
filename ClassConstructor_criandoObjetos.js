@@ -210,8 +210,8 @@ console.log("-------------------------------------------------------------------
 // Exemplo 4: Propriedades definidas fora do construtor
 
 /*
-NA VARIAVEL FORA DO CONSTRUCTOR, CADA INSTANCIA DA CLASSE TERÁ UMA CÓPIA DESSA VARIAVEL, MAS O VALOR DELA
-NÃO SERA COMPARTILHADA ENTRE AS INSTANCIAS. OU SEJA CADA INSTANCIA PODE TER SEU PRÓPRIO VALOR PARA A VARIAVEL.
+NA VARIAVEL FORA DO CONSTRUCTOR, CADA INSTÂNCIA DA CLASSE TERÁ UMA CÓPIA DESSA VARIAVEL, MAS O VALOR DELA
+NÃO SERA COMPARTILHADA ENTRE AS INSTÂNCIAS. OU SEJA CADA INSTANCIA PODE TER SEU PRÓPRIO VALOR PARA A VARIÁVEL.
 */
 
 class PessoaP {
@@ -226,6 +226,10 @@ class PessoaP {
     cumprimentar() {
       console.log(`Olá ${this.Individuo}, meu nome é ${this.nome} e eu tenho ${this.idade} anos.`);
     }
+
+    setIndividuo(Individuo){
+        this.Individuo=Individuo
+    }
 }
   
 
@@ -235,22 +239,25 @@ Ou seja, cada pessoa pode ter seu próprio valor nome e idade.
 */
 
 const pessoa1 = new PessoaP();
-pessoa1.cumprimentar()
+pessoa1.cumprimentar() //Output: Olá Individuo, meu nome é nome? e eu tenho idade? anos.
   
 pessoa1.nome="Bruno"
 pessoa1.idade=29
-pessoa1.cumprimentar()
+pessoa1.cumprimentar() //Output: Olá Individuo, meu nome é Bruno e eu tenho 29 anos.
 console.log("-------------------------")
 
 
 const pessoa2 = new PessoaP();
-pessoa2.cumprimentar()
+pessoa2.cumprimentar() //Output: Olá Individuo, meu nome é nome? e eu tenho idade? anos.
 
 
 pessoa2.nome="Bandelli"
 pessoa2.idade=19
-pessoa2.cumprimentar()
+pessoa2.cumprimentar() //Output: Olá Individuo, meu nome é Bandelli e eu tenho 19 anos.
 console.log("-------------------------")
+
+pessoa2.setIndividuo("Pessoa")
+pessoa2.cumprimentar() //Output: Olá Pessoa, meu nome é Bandelli e eu tenho 19 anos.
 
   
 /*
@@ -268,8 +275,8 @@ console.log("-------------------------------------------------------------------
 //Exemplo 5: Utilizando membros Static.
 
 /*
-Os mebros estáticos pertencem à classe em si e não a instâncias específicas da classe.
-Perceba que a invocar-lo você não chama a instancia e sim a classe.
+Os membros estáticos pertencem à classe em si e não a instâncias específicas da classe.
+Perceba que a invocar-lo você não chama a instância e sim a classe.
 */
 
 class Npc{
@@ -305,7 +312,8 @@ não em instâncias individuais.
 */
 
 /*
-Utilidade: A variável é compartilhada por todas as instâncias da classe, ou seja, todas as instâncias têm o mesmo valor para a variável.
+Utilidade: A variável é compartilhada por todas as instâncias da classe, ou seja, 
+todas as instâncias têm o mesmo valor para a variável.
 Quando usar:
 *Quando você deseja que todas as instâncias compartilhem o mesmo valor para a variável.
 *Quando a variável representa uma propriedade ou configuração que deve ser consistente em todas as instâncias.
@@ -354,18 +362,6 @@ console.log(n1.disparos)
   Para visualizá-los, é necessário acessá-los através do prototype da classe, como em Nave.prototype. 
 */
   
-/*
-  A propriedade prototype permite compartilhar métodos entre todas as instâncias criadas a partir da mesma função construtora. 
-  É uma maneira eficiente de evitar a duplicação de métodos em cada instância e economizar espaço na memória.
-  
-  Portanto, o prototype é uma propriedade especial que pertence à função construtora e não a uma instância específica. 
-  Ela permite que você defina métodos que estão disponíveis para todas as instâncias criadas a partir dessa função.
-  
-  RESUMINDO:
-  Os métodos e propriedades criados usando a propriedade prototype pertencem à função construtora, 
-  não a instâncias específicas. Eles são compartilhados por todas as instâncias criadas a partir dessa função construtora, 
-  o que os torna acessíveis a todas as instâncias, mas eles ainda pertencem à classe em geral.
-*/
 
 /*
  Utilidade: A propriedade prototype é usada em funções construtoras para definir métodos e propriedades compartilhados por todas as instâncias criadas a partir da função construtora.
@@ -374,8 +370,8 @@ console.log(n1.disparos)
  *Quando você deseja economizar memória, pois os métodos e propriedades compartilhados não são duplicados para cada instância.
  *Para criar herança entre funções construtoras, permitindo que as instâncias herdem métodos e propriedades do prototype de outras funções construtoras.
 
- Em resumo, a propriedade prototype é útil para definir métodos e 
- propriedades que são compartilhados por todas as instâncias de uma função construtora, 
+ Em resumo, os métodos e propriedades criados usando a propriedade prototype pertencem à função construtora, 
+ não a instâncias específicas. Eles são compartilhados por todas as instâncias criadas a partir dessa função construtora, 
  promovendo a reutilização de código, economizando memória e facilitando a implementação de herança em JavaScript.
 */
 
