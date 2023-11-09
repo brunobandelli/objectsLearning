@@ -125,7 +125,7 @@ class Individuo {
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
 
 
-//Exemplo 3: Criando objetos usando classes construtoras, metodos e parametros dentro e fora do constructor.
+//Exemplo 3: Criando objetos usando classes construtoras, parametros e metodos para obter e setar informações.
 
 class Carro {
     constructor(pnome, ptipo){
