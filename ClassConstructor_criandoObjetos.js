@@ -5,7 +5,7 @@ As classes construtoras são usadas para criar objetos com propriedades e métod
 Foram introduzidas no ECMAScript 6 (ES6) e fornecem uma sintaxe mais orientada a objetos. 
 A sintaxe é mais declarativa e semelhante a outras linguagens de programação orientada a objetos.
 
-Sintaxe basica:
+Sintaxe básica:
 
 class NomeDaClasse {
   // Método especial chamado construtor para inicializar o objeto
@@ -28,30 +28,42 @@ class NomeDaClasse {
 const minhaInstancia = new NomeDaClasse("Valor 1", "Valor 2");
 
 
-DEFINIÇÃO:
+DEFINIÇÃO DA SINTAXE:
 *class NomeDaClasse: define uma nova classe com o nome especificado.
 
-*O método especial constructor: é usado para inicializar um objeto quando é criado a partir da classe. 
+*Constructor: É o método especial usado para inicializar um objeto quando é criado a partir da classe. 
 Ele recebe os parâmetros que podem ser usados para definir as propriedades do objeto.
 
-*Dentro do constructor: as propriedades do objeto são definidas usando a palavra-chave this.
+*this.: Dentro do constructor as propriedades do objeto são definidas usando a palavra-chave "this." e chamadas nos métodos
+da classe da mesma maneira.
 
-*Os métodos da classe: são definidos após o constructor. 
+*Métodos da classe: são definidos após o constructor. 
 Eles são funções que podem ser chamadas em instâncias da classe para realizar ações ou operações específicas.
 
-*Criação de uma Instância: Use o operador new seguido pelo nome da classe para criar uma instância da classe. 
+*Instância: Use o operador "new" seguido pelo nome da classe para criar uma instância da classe. 
 Você pode passar os valores desejados como argumentos para o construtor. 
 
+------------------------------------------------------------------------------------------------------------------------
 
+REITERANDO:
+Em JavaScript, uma classe em si não é um objeto, mas um modelo ou um plano para criar objetos. 
+Uma classe é uma descrição da estrutura e do comportamento que os objetos criados a partir dela terão. 
+Para criar um objeto real com base nessa classe, você precisa instanciá-la usando a palavra-chave new. 
+A instância é o objeto concreto que segue o modelo definido pela classe.
 
+Portanto, uma classe define como os objetos que serão criados a partir dela devem se parecer e 
+quais propriedades e métodos eles terão. 
+A criação de uma instância com new é o momento em que um objeto real é criado com base nessa definição de classe.
 
-Herança:
-As classes oferecem uma sintaxe mais clara para definir herança. 
-Você pode estender outras classes usando a palavra-chave extends e 
-usar o método super() para chamar o construtor da classe pai.
-(VEJA NO ARQUIVO Herancas_criandoObjetos.js)
+ANALOGIA:
+class: É o Modelo, Como a planta da casa que descreve a estrutura da casa, onde os quartos estarão, as dimensões, etc.
+constructor: Como as especificações de construção que definem os detalhes, como a cor das paredes, o tipo de piso, os móveis, etc.
+Instância (objeto): A casa real construída com base na planta e nas especificações.
+
+-----------------------------------------------------------------------------------------------------------------------------
 */
 
+/*EXEMPLOS:*/
 
 //Exemplo 1: Criando objetos com classes construtoras e parametros
 
@@ -73,28 +85,12 @@ console.log(p1.nome)
 console.log(p2.nome)
 console.log(p3.nome)
 
-/*
-DEIXANDO CLARO:
-Em JavaScript, uma classe em si não é um objeto, mas um modelo ou um plano para criar objetos. 
-Uma classe é uma descrição da estrutura e do comportamento que os objetos criados a partir dela terão. 
-Para criar um objeto real com base nessa classe, você precisa instanciá-la usando a palavra-chave new. 
-A instância é o objeto concreto que segue o modelo definido pela classe.
-
-Portanto, uma classe define como os objetos que serão criados a partir dela devem se parecer e 
-quais propriedades e métodos eles terão. 
-A criação de uma instância com new é o momento em que um objeto real é criado com base nessa definição de classe.
-
-ANALOGIA:
-class: É o Modelo, Como a planta da casa que descreve a estrutura da casa, onde os quartos estarão, as dimensões, etc.
-constructor: Como as especificações de construção que definem os detalhes, como a cor das paredes, o tipo de piso, os móveis, etc.
-Instância (objeto): A casa real construída com base na planta e nas especificações.
-*/
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 1")
 
-//Exemplo 2: Criando objetos com classes construtoras, parametros e medotos, exemplo simples.
+//Exemplo 2: Criando dois objetos usando classe construtora,com parametros e metodo.
 
 class Individuo {
     constructor(nome, idade) {
@@ -105,22 +101,33 @@ class Individuo {
     saudacao() {
       console.log(`Olá, meu nome é ${this.nome} e eu tenho ${this.idade} anos.`);
     }
+
+    setIndividuo(nome,idade){
+        this.nome=nome
+        this.idade=idade
+    }
+
+
   }
   
-  // Criar uma instância da classe Pessoa
-  const Individuo1 = new Individuo("Alice", 30);
+  // Criando as instâncias da classe Individuo
+  const Individuo1 = new Individuo("Alcione", 27);
+  const Individuo2 = new Individuo("Bruno", 29);
   
-  // Usar o método da classe
-  Individuo1.saudacao(); // Saída: Olá, meu nome é Alice e eu tenho 30 anos.
+  // Usando o método da classe
+  Individuo1.saudacao(); // Saída: Olá, meu nome é Alcione e eu tenho 27 anos.
+  Individuo2.saudacao(); // Saída: Olá, meu nome é Bruno e eu tenho 29 anos.
+  Individuo2.setIndividuo("Bandelli",19); //Modificando os valores das propriedades da intancia Individuo2.
+  Individuo2.saudacao(); // Saída: Olá, meu nome é Bruno e eu tenho 29 anos.
+
   
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
 
 
-//Exemplo 3: Criando objetos com classes construtoras, parametros e metodos.
+//Exemplo 3: Criando objetos usando classes construtoras, metodos e parametros dentro e fora do constructor.
 
 class Carro {
-    canal="Youtube"
     constructor(pnome, ptipo){
         this.nome=pnome
         // this.canal="Instagram"
@@ -165,7 +172,6 @@ class Carro {
         console.log(`Nome.: ${this.nome}`)
         console.log(`Tipo.: ${this.tipo}`)
         console.log(`V.Max.: ${this.velmax}`)
-        console.log(`Canal.: ${this.canal}`)
         console.log("--------------------------------")
     }
 }
@@ -197,13 +203,69 @@ c1.setTIpo("Luxo Esportivo Premium")
 c1.setVelMax(500)
 c1.info()
 
+/*---------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
+
+
+// Exemplo 4: Propriedades definidas fora do construtor
+
+/*
+NA VARIAVEL FORA DO CONSTRUCTOR, CADA INSTANCIA DA CLASSE TERÁ UMA CÓPIA DESSA VARIAVEL, MAS O VALOR DELA
+NÃO SERA COMPARTILHADA ENTRE AS INSTANCIAS. OU SEJA CADA INSTANCIA PODE TER SEU PRÓPRIO VALOR PARA A VARIAVEL.
+*/
+
+class PessoaP {
+    // Propriedades definidas fora do construtor
+    nome= "nome?";
+    idade= "idade?";
+  
+    constructor() {
+        this.Individuo="Individuo"
+    }
+  
+    cumprimentar() {
+      console.log(`Olá ${this.Individuo}, meu nome é ${this.nome} e eu tenho ${this.idade} anos.`);
+    }
+}
+  
+
+/*
+Cada instância da classe PessoaP terá uma cópia da propriedade nome e idade, mas ela não será compartilhada entre as instâncias. 
+Ou seja, cada pessoa pode ter seu próprio valor nome e idade.
+*/
+
+const pessoa1 = new PessoaP();
+pessoa1.cumprimentar()
+  
+pessoa1.nome="Bruno"
+pessoa1.idade=29
+pessoa1.cumprimentar()
+console.log("-------------------------")
+
+
+const pessoa2 = new PessoaP();
+pessoa2.cumprimentar()
+
+
+pessoa2.nome="Bandelli"
+pessoa2.idade=19
+pessoa2.cumprimentar()
+console.log("-------------------------")
+
+  
+/*
+Utilidade: Cada instância da classe pode ter seu próprio valor para a variável.
+Quando usar:
+*Quando você deseja que cada objeto da classe tenha uma cópia independente da variável.
+*Quando diferentes instâncias precisam armazenar informações diferentes na mesma variável.
+*/
 
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
 
-//Exemplo 4: Utilizando membros Static.
+//Exemplo 5: Utilizando membros Static.
 
 /*
 Os mebros estáticos pertencem à classe em si e não a instâncias específicas da classe.
@@ -229,11 +291,11 @@ const npc1= new Npc(100)
 const npc2= new Npc(80)
 const npc3= new Npc(30)
 
-Npc.alertar()
+Npc.alertar() // Altera o valor da pripriedade para true, e deixa todos os NPC em alerta.
 
-npc1.info()
-npc2.info()
-npc3.info()
+npc1.info() // Energia: 100 Alerta: Sim
+npc2.info() // Energia: 80 Alerta: Sim
+npc3.info() // Energia: 30 Alerta: Sim
 
 /*
 Os membros estáticos, sejam eles métodos ou propriedades, 
@@ -242,10 +304,21 @@ Eles são compartilhados entre todas as instâncias da classe e são chamados di
 não em instâncias individuais.
 */
 
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
+/*
+Utilidade: A variável é compartilhada por todas as instâncias da classe, ou seja, todas as instâncias têm o mesmo valor para a variável.
+Quando usar:
+*Quando você deseja que todas as instâncias compartilhem o mesmo valor para a variável.
+*Quando a variável representa uma propriedade ou configuração que deve ser consistente em todas as instâncias.
+*Quando você deseja economizar memória, uma vez que apenas uma cópia da variável é compartilhada por todas as instâncias.
+*/
 
-//Exemplo 5: Utilizando Prototype para adicionar propriedades e metodos.
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
+
+//Exemplo 6: Utilizando Prototype para adicionar propriedades e metodos.
+
+//PESQUISAR UTILIDADE!!!!!!!!!
+
 
 /*
 A propriedade prototype é usada para adicionar propriedades e 
@@ -297,7 +370,18 @@ console.log(n1.disparos)
   o que os torna acessíveis a todas as instâncias, mas eles ainda pertencem à classe em geral.
 */
 
+/*
+ Utilidade: A propriedade prototype é usada em funções construtoras para definir métodos e propriedades compartilhados por todas as instâncias criadas a partir da função construtora.
+ Quando usar:
+ *Quando você deseja compartilhar métodos ou propriedades comuns entre todas as instâncias da mesma função construtora.
+ *Quando você deseja economizar memória, pois os métodos e propriedades compartilhados não são duplicados para cada instância.
+ *Para criar herança entre funções construtoras, permitindo que as instâncias herdem métodos e propriedades do prototype de outras funções construtoras.
+
+ Em resumo, a propriedade prototype é útil para definir métodos e 
+ propriedades que são compartilhados por todas as instâncias de uma função construtora, 
+ promovendo a reutilização de código, economizando memória e facilitando a implementação de herança em JavaScript.
+*/
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 6")
