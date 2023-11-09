@@ -317,9 +317,6 @@ console.log("-------------------------------------------------------------------
 
 //Exemplo 6: Utilizando Prototype para adicionar propriedades e metodos.
 
-//PESQUISAR UTILIDADE!!!!!!!!!
-
-
 /*
 A propriedade prototype é usada para adicionar propriedades e 
 métodos que podem ser compartilhados por todas as instâncias criadas a partir dessa função construtora.
