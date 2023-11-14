@@ -358,17 +358,19 @@ console.log(n1.disparos)
   
 /*OBSERVE OS 2 COMENTARIOS ACIMA (//OBSERVE):
   Observe que ao usar console.log em n1, os novos membros criados pelo prototype não serão exibidos diretamente na instância. 
-  Isso ocorre porque esses membros estão associados ao prototype da classe(Nave) em geral, não a instâncias individuais. 
+  Isso ocorre porque esses membros estão associados ao prototype da classe(Nave) em geral, não as instâncias individuais. 
   Para visualizá-los, é necessário acessá-los através do prototype da classe, como em Nave.prototype. 
 */
   
 
 /*
- Utilidade: A propriedade prototype é usada em funções construtoras para definir métodos e propriedades compartilhados por todas as instâncias criadas a partir da função construtora.
+ Utilidade: A propriedade prototype é usada em funções construtoras para definir métodos e 
+ propriedades compartilhados por todas as instâncias criadas a partir da função construtora.
  Quando usar:
  *Quando você deseja compartilhar métodos ou propriedades comuns entre todas as instâncias da mesma função construtora.
  *Quando você deseja economizar memória, pois os métodos e propriedades compartilhados não são duplicados para cada instância.
- *Para criar herança entre funções construtoras, permitindo que as instâncias herdem métodos e propriedades do prototype de outras funções construtoras.
+ *Para criar herança entre funções construtoras, permitindo que as instâncias herdem métodos e propriedades do prototype de 
+ outras funções construtoras.
 
  Em resumo, os métodos e propriedades criados usando a propriedade prototype pertencem à função construtora, 
  não a instâncias específicas. Eles são compartilhados por todas as instâncias criadas a partir dessa função construtora, 
