@@ -1,14 +1,52 @@
 /*CRIANDO OBJETOS COM FUNÇÃO CONSTRUTORA */
 
 /*
-Sintaxe:
-As funções construtoras usam uma função regular para definir o construtor do objeto.
+Uma função construtora em JavaScript é uma função regular que é usada para criar objetos. 
+A principal diferença entre uma função construtora e uma função regular é que você a invoca usando o operador new. 
+Quando você usa new com uma função, ela se torna uma função construtora e retorna um novo objeto.
 Utilizando função construtora você precisa usar a palavra-chave this para atribuir propriedades e métodos ao objeto.
 Além disso, você altera a estrutura, retirando o class, metodo constructor.
+*/
 
-Herança:
-Para criar herança, você precisa adicionar métodos e propriedades ao protótipo da função construtora. 
-A herança é feita manualmente, adicionando propriedades e métodos ao protótipo.
+/*
+Sintaxe básica:
+
+// Definição da função construtora
+function NomeDaFuncao(parametro1, parametro2) {
+  // Propriedades do objeto são definidas usando 'this'
+  this.propriedade1 = parametro1;
+  this.propriedade2 = parametro2;
+
+  // Métodos da função construtora
+  this.metodo1 = function() {
+    // Código do método
+  };
+
+  this.metodo2 = function() {
+    // Código do método
+  };
+}
+
+// Instanciando a função construtora
+const minhaInstancia = new NomeDaFuncao("Valor 1", "Valor 2");
+
+
+DEFINIÇÃO DA SINTAXE:
+
+*function NomeDaFuncao(parametro1, parametro2): Define uma nova função construtora com o nome especificado e 
+recebe parâmetros que podem ser usados para inicializar as propriedades do objeto criado pela função construtora.
+
+*this.: Dentro da função construtora, as propriedades e métodos do objeto são definidos usando a palavra-chave "this." 
+e são referenciados nas instâncias criadas pela função construtora.
+
+
+*Métodos da função construtora: São definidos dentro da função construtora e é recomendado posicioná-los após a definição das propriedades, 
+mas não há uma restrição estrita quanto à ordem.
+São funções que podem ser chamadas em instâncias da função construtora para realizar ações ou operações específicas.
+
+*Instância: Use a palavra-chave "new" seguida pelo nome da função construtora para criar uma instância. 
+Você pode passar os valores desejados como argumentos para o construtor.
+
 */
 
 //Exemplo 1: Criando objetos com função construtora e parametros
