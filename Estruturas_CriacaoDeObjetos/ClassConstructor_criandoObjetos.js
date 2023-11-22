@@ -327,7 +327,7 @@ console.log("-------------------------------------------------------------------
 
 /*
 A propriedade prototype é usada para adicionar propriedades e 
-métodos que podem ser compartilhados por todas as instâncias criadas a partir dessa função construtora.
+métodos que podem ser compartilhados por todas as instâncias criadas a partir dessa classe construtora.
 */
 
 class Nave {
@@ -350,11 +350,11 @@ n1.disparar()
 n1.disparar()
 n1.disparar()
   
-console.log(Nave)
-console.log(Nave.prototype) //OBSERVE
-console.log(n1) //OBSERVE
-console.log(n1.vidas)
-console.log(n1.disparos)
+console.log(Nave) //OUTPUT: [Function: Nave]
+console.log(n1) //OBSERVE //OUTPUT: Nave { energia: 100, disparos: 0 }
+console.log(Nave.prototype) //OBSERVE //OUTPUT: { vidas: 3, disparar: [Function (anonymous)] }
+console.log(n1.vidas) //OUTPUT: 3
+console.log(n1.disparos) //OUTPUT: 0
   
 /*OBSERVE OS 2 COMENTARIOS ACIMA (//OBSERVE):
   Observe que ao usar console.log em n1, os novos membros criados pelo prototype não serão exibidos diretamente na instância. 

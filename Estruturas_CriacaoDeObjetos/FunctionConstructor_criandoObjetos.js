@@ -49,7 +49,7 @@ Você pode passar os valores desejados como argumentos para o construtor.
 
 */
 
-//Exemplo 1: Criando objetos com função construtora e parametros
+//Exemplo 1: Criando objetos com função construtora com parametros e metodo.
 
 function Pessoa(nome, idade) {
     this.nome = nome;
@@ -96,11 +96,11 @@ n1.disparar()
 n1.disparar()
 n1.disparar()
 
-console.log(Nave)
-console.log(Nave.prototype) //OBSERVE
-console.log(n1) //OBSERVE
-console.log(n1.vidas)
-console.log(n1.disparos)
+console.log(Nave) //OUTPUT: [Function: Nave]
+console.log(n1) //OBSERVE //OUTPUT: Nave { energia: 100, disparos: 0 }
+console.log(Nave.prototype) //OBSERVE //OUTPUT: { vidas: 3, disparar: [Function (anonymous)] }
+console.log(n1.vidas) //OUTPUT: 3
+console.log(n1.disparos) //OUTPUT: 0
 
 /*OBSERVE OS 2 COMENTARIOS ACIMA:
 Observe que ao usar console.log em n1, os novos membros criados pelo prototype não serão exibidos diretamente na instância. 
@@ -109,16 +109,17 @@ Para visualizá-los, é necessário acessá-los através do prototype da classe,
 */
 
 /*
-A propriedade prototype permite compartilhar métodos entre todas as instâncias criadas a partir da mesma função construtora. 
-É uma maneira eficiente de evitar a duplicação de métodos em cada instância e economizar espaço na memória.
+ Utilidade: A propriedade prototype é usada em funções construtoras para definir métodos e 
+ propriedades compartilhados por todas as instâncias criadas a partir da função construtora.
+ Quando usar:
+ *Quando você deseja compartilhar métodos ou propriedades comuns entre todas as instâncias da mesma função construtora.
+ *Quando você deseja economizar memória, pois os métodos e propriedades compartilhados não são duplicados para cada instância.
+ *Para criar herança entre funções construtoras, permitindo que as instâncias herdem métodos e propriedades do prototype de 
+ outras funções construtoras.
 
-Portanto, o prototype é uma propriedade especial que pertence à função construtora e não a uma instância específica. 
-Ela permite que você defina métodos que estão disponíveis para todas as instâncias criadas a partir dessa função.
-
-RESUMINDO:
-Os métodos e propriedades criados usando a propriedade prototype pertencem à função construtora, 
-não a instâncias específicas. Eles são compartilhados por todas as instâncias criadas a partir dessa função construtora, 
-o que os torna acessíveis a todas as instâncias, mas eles ainda pertencem à classe em geral.
+ Em resumo, os métodos e propriedades criados usando a propriedade prototype pertencem à função construtora, 
+ não a instâncias específicas. Eles são compartilhados por todas as instâncias criadas a partir dessa função construtora, 
+ promovendo a reutilização de código, economizando memória e facilitando a implementação de herança em JavaScript.
 */
 
 /*------------------------------------------------------------------------------------------------------------------------*/
