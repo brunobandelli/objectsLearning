@@ -133,7 +133,7 @@ especialmente quando se lida com bibliotecas ou frameworks que precisam criar ab
 Veja um exemplo abaixo:
 */
 
-/*Exemplo: 3-A*/
+/*Exemplo: 3-A: Criando classes de forma dinâmica*/
 
 function criarClasse(nomeDaClasse) {
   return class {
@@ -179,7 +179,7 @@ o nome passado durante a criação da instância.
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 3-A")
 
-//Exemplo 3-B*/
+//Exemplo 3-B: Criando classes de forma dinâmica*/
 
 /*
 Vamos supor que você tenha um sistema de plugins, e cada plugin pode ter uma lógica específica. 

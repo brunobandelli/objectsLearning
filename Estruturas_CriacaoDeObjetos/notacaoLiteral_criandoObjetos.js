@@ -173,7 +173,89 @@ const owner = {
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
 
-//Exemplo 4: 
+//Exemplo 4: AD HOC
+
+/*
+"Ad hoc" é uma expressão latina que significa "para isso" ou "para esta finalidade". 
+O termo refere-se a um conceito que destaca a capacidade de improvisar oucriar soluções específicas para atender a necessidades particulares,
+muitas vezes sem seguir um plano ou estrutura predefinida. 
+Essa abordagem flexível e pragmática é frequentemente empregada para resolver problemas específicos no desenvolvimento de software.
+
+Na programação orientada a objetos (POO), a aplicação de ad hoc pode envolver a adição dinâmica de propriedades ou métodos a objetos, 
+modificações em tempo de execução e soluções temporárias para requisitos específicos. 
+Essa flexibilidade é especialmente relevante em linguagens de programação dinâmicas, como JavaScript.
+
+Portanto, 
+o conceito de "ad hoc" destaca a capacidade de adaptar e estender funcionalidades de forma dinâmica e 
+muitas vezes improvisada para atender a necessidades específicas, em vez de seguir rigidamente uma estrutura de código predefinida.
+
+Veja alguns exemplos a baixo:
+*/
+
+/*Exemplo 4-A: Adição de Propriedades*/
+
+// Criando um objeto simples
+var pessoa = {
+    nome: "Maria"
+};
+  
+// Adicionando uma propriedade ad hoc
+pessoa.idade = 30;
+  
+// Acessando a propriedade ad hoc
+console.log(pessoa.idade); // Saída: 30 
+
 
 /*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 4-A")
+
+/*Exemplo 4-B: Adição de Métodos a Objetos Existentes*/
+
+
+// Criando um objeto
+var pessoa = {
+    nome: "João",
+    idade: 25
+};
+  
+// Adicionando um método ad hoc ao objeto
+pessoa.cumprimentar = function() {
+ console.log("Olá, eu sou " + this.nome + "!");
+};
+  
+// Chamando o método ad hoc
+pessoa.cumprimentar(); // Saída: Olá, eu sou João!  
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 4-A")
+
+/*Exemplo 4-C: Adicionando propriedades dinamicamente*/
+
+// Objeto base
+const meuObjeto = {
+    nome: "Objeto Original",
+  };
+  
+  // Função ad hoc para adicionar propriedades dinamicamente
+  function adicionarPropriedade(objeto, chave, valor) {
+    objeto[chave] = valor;
+  }
+  
+  // Adicionando propriedades ao objeto original usando a função ad hoc
+  adicionarPropriedade(meuObjeto, "idade", 25);
+  adicionarPropriedade(meuObjeto, "cor", "azul");
+  
+  // Exibindo o objeto após a adição de propriedades
+  console.log(meuObjeto);
+  /*Output:
+  {
+  nome: 'Objeto Original',
+  idade: 25,
+  cor: 'azul'
+  }
+  */
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 4-C")
