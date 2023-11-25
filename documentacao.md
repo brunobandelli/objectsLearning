@@ -166,7 +166,31 @@ Object.getOwnPropertySymbols(objeto) "Obter Símbolos de Propriedade do Objeto" 
 Object.getOwnPropertyDescriptor(objeto, propriedade) "Obter Descritor de Propriedade do Objeto" // Retorna um objeto com informações sobre a propriedade, como se ela é gravável, enumerável e configurável.
 /*OS EXEMPLOS ESTÃO NO ARQUIVO: metodosPreDefinidos_IntrospeccaoDePropriedades.js*/
 
+/*-----------------------------------------------------------------------------------------------------------------------*/
 
+Conceitos de estruturação.:
+
+A Programação Orientada a Objetos (POO) em JavaScript envolve a aplicação de princípios fundamentais que permitem a organização eficiente e reutilização de código. Esses princípios contribuem para uma abordagem mais modular e orientada a objetos na construção de sistemas complexos. Aqui estão alguns dos conceitos-chave relacionados à estruturação de POO em JavaScript.:
+
+Encapsulamento:
+O encapsulamento em POO refere-se à prática de agrupar propriedades e métodos em uma classe, controlando assim o acesso a eles. Em JavaScript, embora não exista um suporte nativo ao nível de classe no ES5 e anteriores, As funções construtoras e closures podem ser usadas para criar objetos encapsulados.
+
+Herança:
+Herança permite que uma classe herde propriedades e métodos de outra. Em JavaScript, a herança é prototípica, onde os objetos herdam de outros objetos. A introdução das classes no ES6 proporcionou uma sintaxe mais familiar para implementar a herança, mas o mecanismo subjacente permanece baseado em protótipos.
+
+Polimorfismo:
+Polimorfismo refere-se à capacidade de objetos de diferentes classes responderem ao mesmo método ou propriedade de maneira única. Em JavaScript, isso pode ser alcançado através da manipulação dinâmica de objetos e funções.
+
+Abstração:
+A abstração envolve a criação de modelos conceituais que representam entidades Do mundo real. Em JavaScript, isso é implementado por meio de classes e objetos, onde As classes fornecem um modelo abstrato e os objetos representam instâncias específicas desse modelo.
+
+Composição:
+Composição é a prática de construir classes complexas a partir de classes mais simples. Em JavaScript, isso pode ser alcançado combinando objetos e delegando responsabilidades entre eles. A composição é muitas vezes preferida sobre a herança para evitar problemas de acoplamento excessivo.
+
+Módulos:
+A modularidade é a capacidade de dividir um programa em partes independentes e interconectadas. Embora não seja exclusivo da POO, o uso de módulos em JavaScript (introduzido no ES6) permite a criação de componentes reutilizáveis e facilita a manutenção Do código.
+
+Esses conceitos fornecem uma base sólida para a estruturação de código em JavaScript com orientação a objetos, permitindo o desenvolvimento de sistemas mais flexíveis, escaláveis e fáceis de manter.
 
 
 ````
