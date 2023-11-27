@@ -89,21 +89,24 @@ class Galaxy extends Celular {
   }
 }
 
-// Criando uma instância da classe PAI
-const Cell = new Celular("Qualquer marca", "Qualquer Categoria")
-console.log(`Marca: ${Cell.marca}, Categoria: ${Cell.categoria}`)
-
 // Criando uma instância da classe FILHA
 const Smart = new Galaxy("Samsung", "Linha S", "Galaxy S")
 console.log(`Marca: ${Smart.marca}, Categoria: ${Smart.categoria}, Modelo: ${Smart.modelo}`)
+//Output: Marca: Samsung, Categoria: Linha S, Modelo: Galaxy S
+
+// Criando uma instância da classe PAI
+const Cell = new Celular("Qualquer marca", "Qualquer Categoria")
+console.log(`Marca: ${Cell.marca}, Categoria: ${Cell.categoria}`)
+//Output: Marca: Qualquer marca, Categoria: Qualquer Categoria
+
+
 
 /*
 OBS:
-Para garantir uma herança correta e a inicialização adequada do contexto this, 
-é essencial utilizar super(...) no início do construtor da classe filha. 
 Se a classe pai possui parâmetros no construtor, 
 esses parâmetros devem ser passados antes de qualquer outro parâmetro no construtor da classe filha, 
 tanto no construtor quanto na chamada super(...). 
+
 Essa ordem é crucial para estabelecer uma herança adequada e garantir que o contexto this seja inicializado corretamente.
 */
 
@@ -125,29 +128,37 @@ class Pessoa {
   }
 }
 
-// Classe derivada (herda de Pessoa)
+// Classe derivada (FILHA)
 class Estudante extends Pessoa {
   constructor(nome, idade, curso) {
-    super(nome, idade); // Chama o construtor da classe base
+    super(nome, idade); // Chama o construtor da classe PAI
     this.curso = curso;
   }
 
-  apresentar() {
-    super.apresentar(); // Chama o método da classe base
+  apresentarEstudante() {
+    super.apresentar(); // Chama o método da classe PAI
     console.log(`Estou cursando ${this.curso}.`);
   }
 }
 
-// Exemplo de uso
+// Criando a instância da classe FILHA
 const estudante1 = new Estudante('Ana', 20, 'Engenharia');
-estudante1.apresentar(); // Chama o método da classe Estudante, que agora também exibe o curso
+estudante1.apresentarEstudante(); // Chama o método da classe Estudante, que agora também exibe o curso
+/*
+Output:
+Olá, meu nome é Ana e tenho 20 anos.
+Estou cursando Engenharia.
+*/
+
 
 /*
 OBS:
-Não é possível chamar o método da classe pai, super.metodo, diretamente dentro da classe filha. 
-O uso de super.metodo ocorre geralmente dentro de uma funções na classe filha,
+Para invocar o método da classe pai dentro da classe filha, 
+é necessário utilizar a palavra-chave super antes do nome do método.
+Além disso, não é possível chamar o método da classe pai, super.metodo, diretamente dentro da classe filha. 
+O uso de super.metodo ocorre geralmente dentro de funções na classe filha,
 possibilitando que a chamada seja feita de forma indireta. 
-Essa abordagem evita problemas associados à herança e ao contexto de execução
+Essa abordagem evita problemas associados à herança e ao contexto de execução.
 */
 
 
