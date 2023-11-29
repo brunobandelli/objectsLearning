@@ -256,7 +256,9 @@ console.log("-------------------------------------------------------------------
 /*Herança com Função Construtora*/
 
 /*
-Em JavaScript, você pode simular herança utilizando funções construtoras e o conceito de protótipos.
+Em JavaScript, você pode simular herança  por meio de funções construtoras e protótipos, 
+também chamada de herança prototípica. No entanto, é importante notar que, apesar dessa abordagem ser válida, 
+o uso de heranças com classes tornou-se mais convencional e alinhado com as práticas modernas de programação em JavaScript.
 */
 
 
