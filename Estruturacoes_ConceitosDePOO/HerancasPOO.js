@@ -363,8 +363,11 @@ esses métodos são compartilhados entre todas as instâncias criadas a partir d
 Isso significa que todas as instâncias compartilham a mesma referência para esses métodos no protótipo. 
 As instâncias têm acesso ao método, mas não têm uma cópia própria do método em sua própria estrutura de objeto.
 
+
+***Object.create(Pai.prototype)
 Essa linha de código Filho.prototype = Object.create(Pai.prototype); 
 é essencial para estabelecer a herança correta entre a classe Pai e a classe Filho.
+
 Vamos entender cada parte dela:
 
 *Pai.prototype: 
@@ -386,6 +389,22 @@ Ao fazer isso, qualquer método ou propriedade que seja adicionado ao
 protótipo de Pai será automaticamente herdado pelas instâncias de Filho. 
 Isso é uma forma de implementar herança em JavaScript, 
 permitindo que as classes filhas herdem o comportamento das classes pai.
+
+
+
+IMPORTANTE:
+DIFERENÇAS PRINCIPAIS ENTRE USAR OU NÃO PROTOTYPE EM HERANÇAS FEITAS COM FUNÇÕES CONSTRUTORAS.
+
+*Método apresentar na Função Construtora Pai:
+No primeiro código(EXEMPLO6), o método apresentar é adicionado diretamente à função construtora Pai.
+No segundo código(EXEMPLO 5), o método apresentar é adicionado ao protótipo da classe Pai usando Pai.prototype.apresentar.
+
+*Herança de Métodos:
+Em ambos os casos, o método apresentar está disponível para as instâncias da classe Filho. 
+No entanto, no primeiro código, cada instância da classe Filho terá sua própria cópia do método apresentar.
+Ambos os códigos fazem a herança do método apresentar, 
+mas o segundo é geralmente preferido por ser mais eficiente em termos de memória, 
+já que o método é compartilhado entre todas as instâncias através do protótipo.
 
 */
 
