@@ -269,16 +269,16 @@ o uso de heranças com classes tornou-se mais convencional e alinhado com as pr�
 function Pai(nome) {
   this.nome = nome;
 
-  // Método para a classe Pai
+  // Método da classe Pai
   this.apresentar = function() {
     console.log("Meu nome é " + this.nome);
   };
 }
 
-// Função construtora para a classe Filho, que herda de Pai
+// Função construtora FILHO
 function Filho(nome, idade) {
   
-  Pai.call(this, nome); // Chamar o construtor da classe Pai com o contexto adequado
+  Pai.call(this, nome); // Chamando o construtor da classe Pai com o contexto adequado
   
   this.idade = idade; // Propriedades específicas da classe Filho
 
@@ -288,17 +288,19 @@ function Filho(nome, idade) {
   };
 }
 
-// Criar instâncias das classes
-var pai = new Pai("Pai");
-var filho = new Filho("Filho", 10);
+// Criando as instâncias
+const pai = new Pai("Pai");
+const filho = new Filho("Filho", 10);
 
-// Usar os métodos das instâncias
+// Usando os métodos das instâncias
 pai.apresentar(); // Saída: Meu nome é Pai
 filho.apresentar(); // Saída: Meu nome é Filho
 filho.dizerIdade(); // Saída: Minha idade é 10 anos
 
 
 /*
+OBS:
+***Pai.call(this, nome):
 A expressão Pai.call(this, nome) é uma forma de chamar o construtor da classe Pai na função construtora da classe Filho. 
 Vamos quebrar essa expressão para entender cada parte:
 
@@ -314,6 +316,7 @@ nome: É o argumento que será passado para o construtor da classe Pai.
 
 Então, Pai.call(this, nome) está efetivamente chamando o construtor da classe Pai, 
 mas garantindo que ele seja executado no contexto da instância da classe Filho (this se refere à instância de Filho). 
+
 Isso é necessário porque, quando você herda de uma classe para outra em JavaScript, 
 o construtor da classe pai não é chamado automaticamente, então você precisa fazer isso explicitamente.
 
@@ -331,29 +334,29 @@ function PaiCP(nome) {
   this.nome = nome;
 }
 
-// Adicionar um método à classe Pai usando prototype
+// Adicionando um método à classe Pai usando prototype
 PaiCP.prototype.apresentar = function() {
   console.log("Meu nome é " + this.nome + ", Idade: " + this.idade);
 };
 
 // Função construtora para a classe Filho, que herda de Pai
 function FilhoCP(nome, idade) {
-  // Chamar o construtor da classe Pai com o contexto adequado
-  PaiCP.call(this, nome);
+  PaiCP.call(this, nome); // Chamando o construtor da classe Pai com o contexto adequado
   this.idade = idade;
 }
 
 // Herdar os métodos do protótipo da classe Pai
 FilhoCP.prototype = Object.create(PaiCP.prototype);
 
-// Criar instâncias da classe Filho
-var filho1 = new FilhoCP("Filho1", 5);
-var filho2 = new FilhoCP("Filho2", 8);
+// Criando instâncias da classe Filho
+const filho1 = new FilhoCP("Filho1", 5);
+const filho2 = new FilhoCP("Filho2", 8);
 
-// Usar os métodos das instâncias
+// Usando os métodos das instâncias
 filho1.apresentar(); // Saída: Meu nome é Filho1, Idade: 5
 filho2.apresentar(); // Saída: Meu nome é Filho2, Idade: 8
 
+//Verificando se a herança está funcionando corretamente, se true, essas instâncias podem ser tratadas como instâncias da classe pai.
 console.log(filho1 instanceof PaiCP); // true
 console.log(filho2 instanceof PaiCP); // true
 
@@ -366,7 +369,7 @@ Isso significa que todas as instâncias compartilham a mesma referência para es
 As instâncias têm acesso ao método, mas não têm uma cópia própria do método em sua própria estrutura de objeto.
 
 
-***Object.create(Pai.prototype)
+***Filho.prototype = Object.create(Pai.prototype)
 Essa linha de código Filho.prototype = Object.create(Pai.prototype); 
 é essencial para estabelecer a herança correta entre a classe Pai e a classe Filho.
 
@@ -398,10 +401,10 @@ IMPORTANTE:
 DIFERENÇAS PRINCIPAIS ENTRE USAR OU NÃO PROTOTYPE EM HERANÇAS FEITAS COM FUNÇÕES CONSTRUTORAS.
 
 *Método apresentar na Função Construtora Pai:
-No primeiro código(EXEMPLO6), o método apresentar é adicionado diretamente à função construtora Pai.
+No primeiro código(EXEMPLO 6), o método apresentar é adicionado diretamente à função construtora Pai.
 No segundo código(EXEMPLO 5), o método apresentar é adicionado ao protótipo da classe Pai usando Pai.prototype.apresentar.
 
-*Herança de Métodos:
+*Herança de Métodos (Isso vale para propriedades também):
 Em ambos os casos, o método apresentar está disponível para as instâncias da classe Filho. 
 No entanto, no primeiro código, cada instância da classe Filho terá sua própria cópia do método apresentar.
 Ambos os códigos fazem a herança do método apresentar, 
