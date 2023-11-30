@@ -419,3 +419,75 @@ já que o método é compartilhado entre todas as instâncias através do protó
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 6")
+
+/*Herança com Objetos Literais*/
+
+/*
+Também é possivel simular heranças com objetos literais,
+Em baixo temos alguns exemplos:
+*/
+
+
+
+
+//Exemplo 7: Herança com Objeto Literal com Object.create().
+
+/*
+A função Object.create() permite criar um novo objeto com um protótipo especificado.
+Isso possibilita a herança prototípica.
+*/
+
+// Objeto pai
+const paiOL = {
+  nome: "Pai",
+  apresentar: function() {
+    console.log("Meu nome é " + this.nome);
+  }
+};
+
+// Objeto filho que herda de pai
+const filhoOL = Object.create(paiOL);
+filhoOL.nome = "FilhoOL";
+filhoOL.apresentar();  // Saída: Meu nome é Filho
+
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 7")
+
+//Exemplo 8: Herança com Objeto Literal com Atribuição Direta.
+
+/*
+Você pode atribuir propriedades diretamente a objetos filhos, criando uma cópia das propriedades do objeto pai.
+*/
+
+// Objeto pai
+const paiOL2 = {
+  nome: "Pai",
+  apresentar: function() {
+    console.log("Meu nome é " + this.nome);
+  }
+};
+
+// Objeto filho que herda de pai
+var filhoOL2 = {
+  nome: "FilhoOL2"
+};
+
+// Herança de método
+filhoOL2.apresentar = paiOL2.apresentar;
+filhoOL2.apresentar();  // Saída: Meu nome é Filho
+
+
+/*
+OBS:
+Embora essa abordagem funcione, 
+é importante notar que a herança em objetos literais pode se tornar complexa à medida que a estrutura do código cresce. 
+Classes e funções construtoras são frequentemente preferidas para criar hierarquias de objetos em POO, 
+proporcionando uma sintaxe mais clara e organizada.
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 8")
