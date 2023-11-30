@@ -423,11 +423,12 @@ console.log("-------------------------------------------------------------------
 /*Herança com Objetos Literais*/
 
 /*
-Também é possivel simular heranças com objetos literais,
-Em baixo temos alguns exemplos:
+Também é possivel simular heranças com objetos literais, embora essa abordagem funcione, 
+é importante notar que a herança em objetos literais pode se tornar complexa à medida que a estrutura do código cresce. 
+Classes e funções construtoras são frequentemente preferidas para criar hierarquias de objetos em POO, 
+proporcionando uma sintaxe mais clara e organizada.
+Em baixo, alguns exemplos de Heranças com Objetos Literais:
 */
-
-
 
 
 //Exemplo 7: Herança com Objeto Literal com Object.create().
@@ -480,14 +481,6 @@ var filhoOL2 = {
 filhoOL2.apresentar = paiOL2.apresentar;
 filhoOL2.apresentar();  // Saída: Meu nome é Filho
 
-
-/*
-OBS:
-Embora essa abordagem funcione, 
-é importante notar que a herança em objetos literais pode se tornar complexa à medida que a estrutura do código cresce. 
-Classes e funções construtoras são frequentemente preferidas para criar hierarquias de objetos em POO, 
-proporcionando uma sintaxe mais clara e organizada.
-*/
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 8")
