@@ -433,11 +433,6 @@ Em baixo, alguns exemplos de Heranças com Objetos Literais:
 
 //Exemplo 7: Herança com Objeto Literal com Object.create().
 
-/*
-A função Object.create() permite criar um novo objeto com um protótipo especificado.
-Isso possibilita a herança prototípica.
-*/
-
 // Objeto pai
 const paiOL = {
   nome: "Pai",
@@ -451,18 +446,17 @@ const filhoOL = Object.create(paiOL);
 filhoOL.nome = "FilhoOL";
 filhoOL.apresentar();  // Saída: Meu nome é Filho
 
-
-
+/*
+OBS:
+A função Object.create() permite criar um novo objeto com um protótipo especificado.
+Isso possibilita a herança prototípica.
+*/
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 7")
 
 //Exemplo 8: Herança com Objeto Literal com Atribuição Direta.
-
-/*
-Você pode atribuir propriedades diretamente a objetos filhos, criando uma cópia das propriedades do objeto pai.
-*/
 
 // Objeto pai
 const paiOL2 = {
@@ -473,7 +467,7 @@ const paiOL2 = {
 };
 
 // Objeto filho que herda de pai
-var filhoOL2 = {
+const filhoOL2 = {
   nome: "FilhoOL2"
 };
 
@@ -481,6 +475,10 @@ var filhoOL2 = {
 filhoOL2.apresentar = paiOL2.apresentar;
 filhoOL2.apresentar();  // Saída: Meu nome é Filho
 
+/*
+OBS:
+Você pode atribuir propriedades diretamente a objetos filhos, criando uma cópia das propriedades do objeto pai.
+*/
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 8")
