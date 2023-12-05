@@ -49,7 +49,7 @@ reutilizável e fácil de atualizar, assim como a construção com LEGO permite 
 /*Exemplos:*/
 
 
-// Classe Radio
+// Definindo a classe Radio
 class Radio {
   constructor(frequencia){
     this.frequencia=frequencia
