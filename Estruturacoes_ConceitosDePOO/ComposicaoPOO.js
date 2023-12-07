@@ -1,4 +1,29 @@
 /*COMPOSIÇÃO*/
+/*
+---------------------------------------------------------INDICE--------------------------------------------------------------
+INTRODUÇÃO.
+ANALOGIA.
+EXEMPLO 01.
+PONTOS CHAVES SOBRE COMPOSIÇÃO.
+COPOSIÇÃO VS HERANÇA.
+COMPOSIÇÃO COM CLASS CONSTRUCTOR:
+ •COM INSTANCIAMENTO DENTRO DA CLASSE.
+ └EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
+ •SEM INSTANCIAR DENTRO DA CLASSE.
+ └EXEMPLOS 5 À 8 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
+ •COMPOSIÇÃO DINÂMICA.
+ └EXEMPLOS 9 À 10 - COMPOSIÇÃO DINÂMICA.
+
+COMPOSIÇÃO COM FUNCTION CONSTRUCTOR:
+ -
+ -
+ -
+
+COMPOSIÇÃO COM NOTAÇÃO LITERAL:
+ -
+ -
+ -
+*/
 
 /*
 INTRODUÇÃO:
@@ -50,7 +75,7 @@ reutilizável e fácil de atualizar, assim como a construção com LEGO permite 
 */
 
 /*---------------------------------------------------------------------------------------------------------------------*/
-
+/*--------------------------------COMPOSIÇÃO COM CLASS CONSTRUCTOR------------------------------------------------------*/
 /*EXEMPLOS:*/
 
 //Exemplo 1: "Compondo um carro".
@@ -230,7 +255,7 @@ fábricas de objetos ou outras formas de criação dinâmica de composições.
 VEJA MAIS EXEMPLOS ABAIXO:
 EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
 EXEMPLOS 5 À 8 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
-EXEMPLOS 9
+EXEMPLOS 9 À 10 - COMPOSIÇÃO DINÂMICA.
 */
 
 //Exemplo 2: Composição de GUI (Interface Gráfica do Usuário)
@@ -504,7 +529,127 @@ meuSmartphone.tirarFoto();
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 8")
 
+/*----------------------------------------------------COMPOSIÇÃO DINÂMICA--------------------------------------------------*/
+
 /*
-PESQUISAR:
-COMPOSIÇÃO DINAMICA.
+A composição dinâmica refere-se à habilidade de compor objetos ou estruturas flexivelmente em tempo de execução. 
+Isso envolve a adição, remoção ou modificação de propriedades, métodos de um objeto e 
+até mesmo de outras classes durante a execução do programa, proporcionando maior flexibilidade e adaptabilidade ao sistema.
 */
+
+//Exemplo 9: Composição Dinâmica, Adicionando Classes Dentro de Outra Classe.
+
+class Animal {
+  constructor(tipo) {
+    this.tipo = tipo;
+  }
+
+  fazerBarulho() {
+    console.log(`Barulho genérico de ${this.tipo}`);
+  }
+}
+
+class Jaula {
+  constructor() {
+    this.animais = [];
+  }
+
+  adicionarAnimal(tipo) {
+    const novoAnimal = new Animal(tipo);
+    this.animais.push(novoAnimal);
+    console.log(`${tipo} adicionado à jaula.`);
+  }
+
+  fazerBarulhoDosAnimais() {
+    console.log("Barulhos dos animais na jaula:");
+    this.animais.forEach(animal => {
+      animal.fazerBarulho();
+    });
+  }
+}
+
+// Exemplo de composição dinâmica
+const jaula = new Jaula();
+jaula.adicionarAnimal("Leão");
+jaula.adicionarAnimal("Macaco");
+
+// Executando barulhos dos animais na jaula
+jaula.fazerBarulhoDosAnimais();
+
+/*
+Neste exemplo, a classe Jaula possui um array dinâmico de animais, 
+onde você pode adicionar diferentes tipos de animais dinamicamente. 
+Isso também é uma forma de composição dinâmica, 
+pois a estrutura da classe Jaula pode ser modificada durante a execução do programa.
+
+Portanto, 
+a composição dinâmica pode envolver várias formas de modificação ou extensão de objetos e suas relações em tempo de execução,
+incluindo a inclusão dinâmica de instâncias de classes.
+*/
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 9")
+
+//Exemplo 10: Composição dinâminca, adicionando plugins no sistema.
+
+
+class Plugin {
+  constructor(nome) {
+    this.nome = nome;
+  }
+
+  executar() {
+    console.log(`Executando o plugin ${this.nome}`);
+  }
+}
+
+class SistemaComPlugins {
+  constructor() {
+    this.plugins = [];
+  }
+
+  adicionarPlugin(plugin) {
+    this.plugins.push(plugin);
+    console.log(`Plugin ${plugin.nome} adicionado ao sistema.`);
+  }
+
+  executarPlugins() {
+    console.log("Executando todos os plugins:");
+    this.plugins.forEach(plugin => {
+      plugin.executar();
+    });
+  }
+}
+
+
+// Criando instâncias de plugins
+const plugin1 = new Plugin("Plugin 1");
+const plugin2 = new Plugin("Plugin 2");
+
+// Criando instância do sistema
+const sistema = new SistemaComPlugins();
+
+// Adicionando plugins dinamicamente
+sistema.adicionarPlugin(plugin1);
+sistema.adicionarPlugin(plugin2);
+
+// Executando todos os plugins
+sistema.executarPlugins();
+
+
+/*
+Neste exemplo, temos duas classes: Plugin e SistemaComPlugins. 
+A classe SistemaComPlugins possui uma lista dinâmica de plugins que podem ser adicionados em tempo de execução. 
+Cada plugin, representado pela classe Plugin, possui um método executar. 
+O sistema pode executar todos os plugins adicionados a ele.
+
+Esse exemplo ilustra como a composição dinâmica pode ser usada para estender e 
+modificar o comportamento de um sistema em tempo de execução, permitindo a inclusão dinâmica de funcionalidades adicionais.
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 10")
+
+/*--------------------------------COMPOSIÇÃO COM FUNCTION CONSTRUCTOR------------------------------------------------------*/
+
