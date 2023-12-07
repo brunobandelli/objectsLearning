@@ -109,12 +109,21 @@ class Carro {
 
 // Criando uma instância da classe Carro e utilizando os métodos de composição.
 const meuCarro = new Carro("Toyota", "Corolla");
-//ligando o motor e o rádio
-meuCarro.ligarCarro();
-//desligando o motor e o rádio
-meuCarro.desligarCarro();
+meuCarro.ligarCarro(); //ligando o motor e o rádio
+/*OUTPUT:
+Toyota Corolla ligado.
+Motor V8 ligado
+Rádio ligado na FM
+*/
+meuCarro.desligarCarro(); //desligando o motor e o rádio
+/*OUTPUT:
+Toyota Corolla desligado.
+Motor V8 desligado
+Rádio desligado
+*/
 
-
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 1")
 
 /*
 OBS:
@@ -128,7 +137,7 @@ A escolha entre herança e composição depende dos requisitos específicos do p
 
 
 /*
-PONTOS CHAVES SOBRE COMPOSIÇÃO:
+-----------------------------------------PONTOS CHAVES SOBRE COMPOSIÇÃO---------------------------------------------------
 Aqui estão alguns pontos-chave sobre composição.
 
 Objetos Componentes:
@@ -151,12 +160,11 @@ A composição ajuda a evitar o acoplamento rígido,
 um problema comum na herança. Quando você herda de uma classe, 
 qualquer alteração na classe pai pode afetar todas as classes filhas. 
 Com a composição, as alterações nos objetos componentes geralmente têm um impacto limitado.
+------------------------------------------------------------------------------------------------------------------------
 */
 
-
-
 /*
-COPOSIÇÃO VS HERANÇA:
+-----------------------------------------COPOSIÇÃO VS HERANÇA--------------------------------------------------------------
 Herança e composição são duas abordagens diferentes na construção de relacionamentos entre classes em POO.
 Aqui estão as principais diferenças entre elas:
 
@@ -201,4 +209,302 @@ Em muitos casos, uma combinação de herança e composição pode ser a abordage
 dependendo dos requisitos específicos do projeto. 
 É importante entender as vantagens e desvantagens de cada abordagem para tomar decisões informadas durante 
 o design do sistema.
+-----------------------------------------------------------------------------------------------------------------------
+*/
+
+/*
+ALÉM DISSO, EXISTEM ALGUMAS OUTRAS MANEIRAS DE ALCANÇAR A COMPOSIÇÃO:
+As três abordagens principais mencionadas são:
+
+Instanciando uma classe dentro da outra: 
+Isso é o que geralmente é associado à composição, onde uma classe contém uma instância de outra.
+
+Sem instanciar uma classe dentro de outra: 
+Isso pode ser feito passando instâncias de classes como parâmetros para métodos ou construtores, 
+injetando dependências sem a necessidade de criar instâncias diretamente dentro de uma classe.
+
+Composição dinâmica: 
+Isso pode envolver a combinação de objetos em tempo de execução, seja por meio de funções, 
+fábricas de objetos ou outras formas de criação dinâmica de composições.
+
+VEJA MAIS EXEMPLOS ABAIXO:
+EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
+EXEMPLOS 5 À 8 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
+EXEMPLOS 9
+*/
+
+//Exemplo 2: Composição de GUI (Interface Gráfica do Usuário)
+
+// Classe Button
+class Button {
+  click() {
+    console.log("Button clicked");
+  }
+}
+
+// Classe TextBox
+class TextBox {
+  input(value) {
+    console.log(`Entered value: ${value}`);
+  }
+}
+
+// Classe Form que utiliza composição
+class Form {
+  constructor() {
+    this.button = new Button();
+    this.textBox = new TextBox();
+  }
+
+  submit() {
+    this.button.click();
+    this.textBox.input("User input");
+    console.log("Form submitted");
+  }
+}
+
+// Uso da composição
+const myForm = new Form();
+myForm.submit();
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
+
+//Exemplo 3: Composição em um Jogo
+
+// Classe Player
+class Player {
+  constructor(name) {
+    this.name = name;
+  }
+
+  attack() {
+    console.log(`${this.name} is attacking`);
+  }
+}
+
+// Classe Weapon
+class Weapon {
+  use() {
+    console.log("Weapon used");
+  }
+}
+
+// Classe PlayerWithWeapon que utiliza composição
+class PlayerWithWeapon {
+  constructor(name) {
+    this.player = new Player(name);
+    this.weapon = new Weapon();
+  }
+
+  attackWithWeapon() {
+    this.player.attack();
+    this.weapon.use();
+  }
+}
+
+// Uso da composição
+const myPlayer = new PlayerWithWeapon("Hero");
+myPlayer.attackWithWeapon();
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
+
+//Exemplo 4: Composição em um Sistema de Pagamento
+
+// Classe CreditCard
+class CreditCard {
+  constructor(number) {
+    this.number = number;
+  }
+
+  makePayment(amount) {
+    console.log(`Payment of $${amount} made with credit card ending in ${this.number}`);
+  }
+}
+
+// Classe PayPal
+class PayPal {
+  constructor(email) {
+    this.email = email;
+  }
+
+  makePayment(amount) {
+    console.log(`Payment of $${amount} made with PayPal account ${this.email}`);
+  }
+}
+
+// Classe PaymentProcessor que utiliza composição
+class PaymentProcessor {
+  constructor() {
+    this.creditCard = new CreditCard("1234");
+    this.payPal = new PayPal("user@example.com");
+  }
+
+  processCreditCardPayment(amount) {
+    this.creditCard.makePayment(amount);
+  }
+
+  processPayPalPayment(amount) {
+    this.payPal.makePayment(amount);
+  }
+}
+
+// Uso da composição
+const paymentProcessor = new PaymentProcessor();
+paymentProcessor.processCreditCardPayment(50);
+paymentProcessor.processPayPalPayment(30);
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
+
+/*------------------------------COMPOSIÇÃO SEM INSTANCIAR UMA CLASSE DENTRO DE OTRA----------------------------------------*/
+
+//Exemplo 5: Composição sem instanciar diretamente uma classe dentro de outra.
+
+/*
+Uma maneira de realizar composição sem instanciar diretamente uma classe dentro de outra 
+é passar instâncias de outras classes como argumentos para o construtor ou para métodos. 
+Isso é frequentemente chamado de "injeção de dependência"
+*/
+
+class Motor2 {
+  constructor(tipo) {
+    this.tipo = tipo;
+  }
+
+  ligar() {
+    console.log(`Motor ${this.tipo} ligado`);
+  }
+}
+
+class Carro2 {
+  constructor(motor) {
+    this.motor = motor;
+  }
+
+  ligarCarro() {
+    console.log('Carro ligado');
+    this.motor.ligar();
+  }
+}
+
+const motorV6 = new Motor2('V6');
+const meuCarro2 = new Carro2(motorV6);
+meuCarro2.ligarCarro();
+
+/*
+----------------------------"COMPOSIÇÃO INTERNA VS COMPOSIÇÃO EXTERNA"-------------------------------------------------------
+*Composição Interna(Instanciar dentro da classe):
+Vantagens:
+Encapsulamento forte.
+Pode ser mais intuitivo quando os objetos estão fortemente acoplados.
+
+Desvantagens:
+Menos flexibilidade se você quiser substituir componentes facilmente.
+Pode aumentar o acoplamento entre as classes.
+
+
+*Composição Externa(Instanciar fora da classe):
+Vantagens:
+Maior flexibilidade, especialmente quando há necessidade de variações ou diferentes implementações.
+Melhor reusabilidade.
+
+Desvantagens:
+Pode resultar em maior complexidade, pois os objetos precisam ser criados e gerenciados em algum lugar externo.
+A classe que recebe os objetos precisa saber mais sobre a implementação específica.
+Recomendação:
+
+Recomendações:
+Se os objetos são fortemente acoplados e fazem parte integral do objeto contêiner, 
+a composição interna pode ser a escolha mais natural e mais fácil de entender.
+Se você está projetando para flexibilidade, reusabilidade e testabilidade, a composição externa pode ser preferível.
+Em outras palavras,
+Composição interna é indicada para objetos naturalmente acoplados e foco em encapsulamento. 
+Já composição externa é preferível para flexibilidade e reusabilidade, facilitando substituição de componentes.
+
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
+
+//Exemplo 6: Injeção de Dependência por Método
+
+class Sensor {
+  detectar() {
+    console.log('Sensor detectou algo');
+  }
+}
+
+class Alarme {
+  acionar(sensor) {
+    console.log('Alarme acionado');
+    sensor.detectar();
+  }
+}
+
+const sensorDeMovimento = new Sensor();
+const sistemaDeAlarme = new Alarme();
+sistemaDeAlarme.acionar(sensorDeMovimento);
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 6")
+
+//Exemplo 7: Composição de Funções
+
+function Motor3(tipo) {
+  return {
+    tipo,
+    ligar() {
+      console.log(`Motor ${tipo} ligado`);
+    }
+  };
+}
+
+function Carro3(motor) {
+  return {
+    ligarCarro() {
+      console.log('Carro ligado');
+      motor.ligar();
+    }
+  };
+}
+
+const motorV8 = Motor3('V8');
+const meuCarro3 = Carro3(motorV8);
+meuCarro3.ligarCarro();
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 7")
+
+//Exemplo 8: Injeção de Dependência em Módulo
+
+const CameraModule = {
+  capturarImagem() {
+    console.log('Imagem capturada pela câmera');
+  }
+};
+
+function Smartphone(camera) {
+  return {
+    tirarFoto() {
+      console.log('Tirando foto com o smartphone');
+      camera.capturarImagem();
+    }
+  };
+}
+
+const meuSmartphone = Smartphone(CameraModule);
+meuSmartphone.tirarFoto();
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 8")
+
+/*
+PESQUISAR:
+COMPOSIÇÃO DINAMICA.
 */
