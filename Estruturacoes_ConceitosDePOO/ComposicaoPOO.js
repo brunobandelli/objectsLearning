@@ -25,8 +25,9 @@ COMPOSIÇÃO COM NOTAÇÃO LITERAL:
  -
 */
 
+/*-------------------------------------------------------------------------------------------------------------------------*/
 /*
-INTRODUÇÃO:
+-----------------------------------------------------------INTRODUÇÃO--------------------------------------------------------
 A composição promove a reutilização de código e ajuda a evitar os problemas associados à herança, 
 como o acoplamento rígido e a hierarquia de classes complexa.
 A composição é uma técnica poderosa em POO que ajuda a criar código modular, 
@@ -39,7 +40,7 @@ como se fosse legos, graças a sua aborgadem modular.
 
 ------------------------------------------------------------------------------------------------------------------------
 
-ANALOGIA:
+-------------------------------------------------------------ANALOGIA-------------------------------------------------------
 Construindo uma Casa com LEGO
 
 Imagine que você está construindo uma casa usando blocos de LEGO. Cada bloco de LEGO é como uma classe em programação.
@@ -75,8 +76,8 @@ reutilizável e fácil de atualizar, assim como a construção com LEGO permite 
 */
 
 /*---------------------------------------------------------------------------------------------------------------------*/
-/*--------------------------------COMPOSIÇÃO COM CLASS CONSTRUCTOR------------------------------------------------------*/
-/*EXEMPLOS:*/
+/*-----------------------------------COMPOSIÇÃO COM CLASS CONSTRUCTOR------------------------------------------------------*/
+/*----------------------------------------------------EXEMPLOS-------------------------------------------------------------*/
 
 //Exemplo 1: "Compondo um carro".
 
