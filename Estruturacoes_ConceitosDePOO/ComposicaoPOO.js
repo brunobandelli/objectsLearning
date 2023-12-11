@@ -1064,8 +1064,8 @@ Form submitted
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 18")
 
-/*-----------------------COMPOSIÇÃO SEM INSTANCIAR UM OBJETO DENTRO DE OUTRO-----------------------------OBJETO LITERAL*/
-console.log("------------------COMPOSIÇÃO SEM INSTANCIAR UM OBJETO DENTRO DE OUTRO----------------------OBJETO LITERAL")
+/*-----------------------COMPOSIÇÃO SEM INSTANCIAR UM OBJETO DENTRO DE OUTRO-----------------------------------OBJETO LITERAL*/
+console.log("------------------COMPOSIÇÃO SEM INSTANCIAR UM OBJETO DENTRO DE OUTRO-----------------------------OBJETO LITERAL")
 
 //Exemplo 19: Composição com Objeto Literal, SEM instanciar um Objeto dentro de outro.
 
@@ -1128,11 +1128,103 @@ sistemaDeAlarmeLiteral.acionar(sensorDeMovimentoLiteral);
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 20")
 
-//Exemplo 21: 
+/*----------------------------------------------------COMPOSIÇÃO DINÂMICA---------------------------------------OBJETO LITERAL*/
+console.log("-----------------------------------COMPOSIÇÃO DINÂMICA---------------------------------------------OBJETO LITERAL")
+
+//Exemplo 21: Composição Dinâmica com Objeto Literal, Adicionando Objeto Dentro de Outra Objeto.
+
+
+// Objeto literal Animal
+const animalLiteral = {
+  fazerBarulho() {
+    console.log(`Barulho genérico de ${this.tipo}`);
+  }
+};
+
+// Objeto literal Jaula com composição dinâmica
+const jaulaLiteral = {
+  animais: [],
+
+  adicionarAnimal(tipo) {
+    const novoAnimal = Object.create(animalLiteral);
+    novoAnimal.tipo = tipo;
+    this.animais.push(novoAnimal);
+    console.log(`${tipo} adicionado à jaula.`);
+  },
+
+  fazerBarulhoDosAnimais() {
+    console.log("Barulhos dos animais na jaula:");
+    this.animais.forEach(animal => {
+      animal.fazerBarulho();
+    });
+  }
+};
+
+// Exemplo de composição dinâmica
+const jaulaDinamica = Object.create(jaulaLiteral);
+jaulaDinamica.adicionarAnimal("Leão");   // Output: Leão adicionado à jaula.
+jaulaDinamica.adicionarAnimal("Macaco"); // Output: Macaco adicionado à jaula.
+
+// Executando barulhos dos animais na jaula
+jaulaDinamica.fazerBarulhoDosAnimais();
+/* Output:
+Barulhos dos animais na jaula:
+Barulho genérico de Leão
+Barulho genérico de Macaco
+*/
+
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 21")
-//Exemplo 22: 
+
+//Exemplo 22: Composição dinâminca com Objeto Literal, adicionando plugins no sistema.
+
+// Objeto literal Plugin
+const pluginLiteral = {
+  executar() {
+    console.log(`Executando o plugin ${this.nome}`);
+  }
+};
+
+// Objeto literal SistemaComPlugins com composição dinâmica
+const sistemaComPluginsLiteral = {
+  plugins: [],
+
+  adicionarPlugin(plugin) {
+    this.plugins.push(plugin);
+    console.log(`Plugin ${plugin.nome} adicionado ao sistema.`);
+  },
+
+  executarPlugins() {
+    console.log("Executando todos os plugins:");
+    this.plugins.forEach(plugin => {
+      plugin.executar();
+    });
+  }
+};
+
+// Criando instâncias de plugins
+const plugin1Literal = Object.create(pluginLiteral);
+plugin1Literal.nome = "Plugin 1";
+
+const plugin2Literal = Object.create(pluginLiteral);
+plugin2Literal.nome = "Plugin 2";
+
+// Criando instância do sistema com plugins dinamicamente
+const sistemaComPluginsDinamico = Object.create(sistemaComPluginsLiteral);
+
+// Adicionando plugins dinamicamente
+sistemaComPluginsDinamico.adicionarPlugin(plugin1Literal); // Output: Plugin Plugin 1 adicionado ao sistema.
+sistemaComPluginsDinamico.adicionarPlugin(plugin2Literal); // Output: Plugin Plugin 2 adicionado ao sistema.
+
+// Executando todos os plugins
+sistemaComPluginsDinamico.executarPlugins();
+/* Output:
+Executando todos os plugins:
+Executando o plugin Plugin 1
+Executando o plugin Plugin 2
+*/
+
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 22")
