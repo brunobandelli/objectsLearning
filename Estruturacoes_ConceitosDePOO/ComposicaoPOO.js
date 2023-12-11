@@ -1,25 +1,28 @@
 /*COMPOSIÇÃO*/
 /*
 ---------------------------------------------------------INDICE--------------------------------------------------------------
-INTRODUÇÃO.
-ANALOGIA.
-EXEMPLO 01.
-PONTOS CHAVES SOBRE COMPOSIÇÃO.
-COPOSIÇÃO VS HERANÇA.
-COMPOSIÇÃO COM CLASS CONSTRUCTOR:
- •COM INSTANCIAMENTO DENTRO DA CLASSE.
- └EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
- •SEM INSTANCIAR DENTRO DA CLASSE.
- └EXEMPLOS 5 À 8 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
- •COMPOSIÇÃO DINÂMICA.
- └EXEMPLOS 9 À 10 - COMPOSIÇÃO DINÂMICA.
+*INTRODUÇÃO.
+*ANALOGIA.
+*EXEMPLO 01.
+*PONTOS CHAVES SOBRE COMPOSIÇÃO.
+*COPOSIÇÃO VS HERANÇA.
+*COMPOSIÇÃO COM CLASS CONSTRUCTOR:
+  •COM INSTANCIAMENTO DENTRO DA CLASSE.
+  └EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
+  •SEM INSTANCIAR DENTRO DA CLASSE.
+  └EXEMPLOS 5 À 8 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
+  •COMPOSIÇÃO DINÂMICA.
+  └EXEMPLOS 9 À 10 - COMPOSIÇÃO DINÂMICA.
 
-COMPOSIÇÃO COM FUNCTION CONSTRUCTOR:
- -
- -
- -
+*COMPOSIÇÃO COM FUNCTION CONSTRUCTOR:
+  •COM INSTANCIAMENTO DENTRO DA CLASSE.
+  └EXEMPLOS 11 À 12 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
+  •SEM INSTANCIAR DENTRO DA CLASSE.
+  └EXEMPLOS 13 À 14 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
+  •COMPOSIÇÃO DINÂMICA.
+  └EXEMPLOS 15 À 16 - COMPOSIÇÃO DINÂMICA.
 
-COMPOSIÇÃO COM NOTAÇÃO LITERAL:
+*COMPOSIÇÃO COM NOTAÇÃO LITERAL:
  -
  -
  -
@@ -77,6 +80,7 @@ reutilizável e fácil de atualizar, assim como a construção com LEGO permite 
 
 /*---------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------COMPOSIÇÃO COM CLASS CONSTRUCTOR------------------------------------------------------*/
+console.log("-----------------------------------COMPOSIÇÃO COM CLASS CONSTRUCTOR------------------------------------------------------")
 /*----------------------------------------------------EXEMPLOS-------------------------------------------------------------*/
 
 //Exemplo 1: "Compondo um carro".
@@ -292,6 +296,11 @@ class Form {
 // Uso da composição
 const myForm = new Form();
 myForm.submit();
+/*Output:
+Button clicked
+Entered value: User input
+Form submitted
+*/
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
@@ -332,6 +341,10 @@ class PlayerWithWeapon {
 // Uso da composição
 const myPlayer = new PlayerWithWeapon("Hero");
 myPlayer.attackWithWeapon();
+/*Output:
+Hero is attacking
+Weapon used
+*/
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
@@ -378,13 +391,14 @@ class PaymentProcessor {
 
 // Uso da composição
 const paymentProcessor = new PaymentProcessor();
-paymentProcessor.processCreditCardPayment(50);
-paymentProcessor.processPayPalPayment(30);
+paymentProcessor.processCreditCardPayment(50);//Output: Payment of $50 made with credit card ending in 1234
+paymentProcessor.processPayPalPayment(30);//Output: Payment of $30 made with PayPal account user@example.com
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
 
-/*------------------------------COMPOSIÇÃO SEM INSTANCIAR UMA CLASSE DENTRO DE OTRA----------------------------------------*/
+/*-----------------------COMPOSIÇÃO SEM INSTANCIAR UMA CLASSE DENTRO DE OTRA-----------------------------CLASS CONSTRUCTOR*/
+console.log("------------------COMPOSIÇÃO SEM INSTANCIAR UMA CLASSE DENTRO DE OTRA----------------------CLASS CONSTRUCTOR")
 
 //Exemplo 5: Composição sem instanciar diretamente uma classe dentro de outra.
 
@@ -418,6 +432,10 @@ class Carro2 {
 const motorV6 = new Motor2('V6');
 const meuCarro2 = new Carro2(motorV6);
 meuCarro2.ligarCarro();
+/*Output:
+Carro ligado
+Motor V6 ligado
+*/
 
 /*
 ----------------------------"COMPOSIÇÃO INTERNA VS COMPOSIÇÃO EXTERNA"-------------------------------------------------------
@@ -454,7 +472,7 @@ Já composição externa é preferível para flexibilidade e reusabilidade, faci
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
 
-//Exemplo 6: Injeção de Dependência por Método
+//Exemplo 6: Injeção de Dependência por Método (SEM instanciar internamente)
 
 class Sensor {
   detectar() {
@@ -472,6 +490,10 @@ class Alarme {
 const sensorDeMovimento = new Sensor();
 const sistemaDeAlarme = new Alarme();
 sistemaDeAlarme.acionar(sensorDeMovimento);
+/*Output:
+Alarme acionado
+Sensor detectou algo
+*/
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -500,6 +522,10 @@ function Carro3(motor) {
 const motorV8 = Motor3('V8');
 const meuCarro3 = Carro3(motorV8);
 meuCarro3.ligarCarro();
+/*Output:
+Carro ligado
+Motor V8 ligado
+*/
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 7")
@@ -523,6 +549,10 @@ function Smartphone(camera) {
 
 const meuSmartphone = Smartphone(CameraModule);
 meuSmartphone.tirarFoto();
+/*Output:
+Tirando foto com o smartphone
+Imagem capturada pela câmera
+*/
 
 
 
@@ -530,7 +560,8 @@ meuSmartphone.tirarFoto();
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 8")
 
-/*----------------------------------------------------COMPOSIÇÃO DINÂMICA--------------------------------------------------*/
+/*----------------------------------------------------COMPOSIÇÃO DINÂMICA---------------------------------CLASS CONSTRUCTOR*/
+console.log("-----------------------------------COMPOSIÇÃO DINÂMICA---------------------------------------CLASS CONSTRUCTOR")
 
 /*
 A composição dinâmica refere-se à habilidade de compor objetos ou estruturas flexivelmente em tempo de execução. 
@@ -571,11 +602,16 @@ class Jaula {
 
 // Exemplo de composição dinâmica
 const jaula = new Jaula();
-jaula.adicionarAnimal("Leão");
-jaula.adicionarAnimal("Macaco");
+jaula.adicionarAnimal("Leão");//Output: Leão adicionado à jaula.
+jaula.adicionarAnimal("Macaco");//Output: Macaco adicionado à jaula.
 
 // Executando barulhos dos animais na jaula
 jaula.fazerBarulhoDosAnimais();
+/*Output:
+Barulhos dos animais na jaula:
+Barulho genérico de Leão
+Barulho genérico de Macaco
+*/
 
 /*
 Neste exemplo, a classe Jaula possui um array dinâmico de animais, 
@@ -632,11 +668,16 @@ const plugin2 = new Plugin("Plugin 2");
 const sistema = new SistemaComPlugins();
 
 // Adicionando plugins dinamicamente
-sistema.adicionarPlugin(plugin1);
-sistema.adicionarPlugin(plugin2);
+sistema.adicionarPlugin(plugin1);//Output: Plugin Plugin 1 adicionado ao sistema.
+sistema.adicionarPlugin(plugin2);//Output: Plugin Plugin 2 adicionado ao sistema.
 
 // Executando todos os plugins
 sistema.executarPlugins();
+/*Output:
+Executando todos os plugins:
+Executando o plugin Plugin 1
+Executando o plugin Plugin 2
+*/
 
 
 /*
@@ -653,4 +694,445 @@ modificar o comportamento de um sistema em tempo de execução, permitindo a inc
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 10")
 
 /*--------------------------------COMPOSIÇÃO COM FUNCTION CONSTRUCTOR------------------------------------------------------*/
+console.log("-----------------------------------COMPOSIÇÃO COM FUNCTION CONSTRUCTOR------------------------------------------------------")
 
+//Exemplo 11: Composição com Function Constructor, adiconando motor no carro.
+
+// Função construtora para representar um Motor
+function Motor4(tipo) {
+  this.tipo = tipo;
+
+  this.ligar = function () {
+    console.log(`Motor ${this.tipo} ligado.`);
+  };
+
+  this.desligar = function () {
+    console.log(`Motor ${this.tipo} desligado.`);
+  };
+}
+
+// Função construtora para representar um Carro
+function Carro4() {
+  this.motor = new Motor4("4 cilindros"); // Composição: Carro possui um Motor
+
+  this.ligarCarro = function () {
+    console.log("Carro ligado.");
+    this.motor.ligar(); // Delegando a responsabilidade de ligar ao Motor
+  };
+
+  this.desligarCarro = function () {
+    console.log("Carro desligado.");
+    this.motor.desligar(); // Delegando a responsabilidade de desligar ao Motor
+  };
+}
+
+// Utilizando as classes
+const meuCarro4 = new Carro4();
+
+meuCarro4.ligarCarro();
+/*Output:
+Carro ligado.
+Motor 4 cilindros ligado.
+*/
+meuCarro4.desligarCarro();
+/*Output:
+Carro desligado.
+Motor 4 cilindros desligado.
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 11")
+
+//Exemplo 12: Composição com Function Constructor, adicionando componentes de computador.
+
+
+// Função construtora para representar uma CPU
+function CPU(modelo) {
+  this.modelo = modelo;
+
+  this.executarPrograma = function (programa) {
+    console.log(`${this.modelo} executando: ${programa}`);
+  };
+}
+
+// Função construtora para representar uma Memória
+function Memoria(tipo) {
+  this.tipo = tipo;
+
+  this.armazenarDados = function (dados) {
+    console.log(`${this.tipo} armazenando: ${dados}`);
+  };
+}
+
+// Função construtora para representar um Computador
+function Computador() {
+  this.cpu = new CPU("Intel i5"); // Composição: Computador possui uma CPU
+  this.memoria = new Memoria("DDR4"); // Composição: Computador possui uma Memória
+
+  this.ligar = function () {
+    console.log("Computador ligado.");
+  };
+
+  this.desligar = function () {
+    console.log("Computador desligado.");
+  };
+}
+
+// Utilizando as classes
+const meuComputador = new Computador();
+
+meuComputador.ligar(); //Output: Computador ligado.
+meuComputador.cpu.executarPrograma("Calculadora"); //Output: Intel i5 executando: Calculadora
+meuComputador.memoria.armazenarDados("Documentos"); //Output: DDR4 armazenando: Documentos
+meuComputador.desligar(); //Output: Computador desligado.
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 12")
+
+/*-----------------------COMPOSIÇÃO SEM INSTANCIAR UMA CLASSE DENTRO DE OTRA-----------------------------FUNCTION CONSTRUCTOR*/
+console.log("------------------COMPOSIÇÃO SEM INSTANCIAR UMA CLASSE DENTRO DE OTRA----------------------FUNCTION CONSTRUCTOR")
+
+
+//Exemplo 13: Composição com Function Constructor, SEM instanciar uma classe dentro da outra.
+
+// Função construtora para representar um Motor
+function MotorF(tipo) {
+  this.tipo = tipo;
+
+  this.ligar = function () {
+    console.log(`Motor ${this.tipo} ligado.`);
+  };
+}
+
+// Função construtora para representar um Carro
+function CarroF(motor) {
+  this.motor = motor;
+
+  this.ligarCarro = function () {
+    console.log('Carro ligado.');
+    this.motor.ligar();
+  };
+}
+
+// Utilizando as funções construtoras
+const motorV6F = new MotorF('V6');
+const meuCarroF = new CarroF(motorV6F);
+
+meuCarroF.ligarCarro();
+/*Output:
+Carro ligado.
+Motor V6 ligado.
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 13")
+
+//Exemplo 14: Composição com Function Constructor, SEM instanciar uma classe dentro da outra, Composição de alarme.
+
+// Função construtora para representar um Sensor
+function Sensor2() {
+  this.detectar = function () {
+    console.log('Sensor detectou algo.');
+  };
+}
+
+// Função construtora para representar um Alarme
+function Alarme2() {
+  this.acionar = function (sensor) {
+    console.log('Alarme acionado.');
+    sensor.detectar();
+  };
+}
+
+// Utilizando as funções construtoras
+const sensorDeMovimento2 = new Sensor2();
+const sistemaDeAlarme2 = new Alarme2();
+
+sistemaDeAlarme2.acionar(sensorDeMovimento2);
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 14")
+
+/*----------------------------------------------------COMPOSIÇÃO DINÂMICA--------------------------------FUNCTION CONSTRUCTOR*/
+console.log("-----------------------------------COMPOSIÇÃO DINÂMICA---------------------------------------FUNCTION CONSTRUCTOR")
+
+//Exemplo 15: Composição Dinâmica com Function constructor, Adicionando Classes Dentro de Outra Classe.
+
+
+// Função construtora para representar um Animal
+function Animal2(tipo) {
+  this.tipo = tipo;
+
+  this.fazerBarulho = function () {
+    console.log(`Barulho genérico de ${this.tipo}`);
+  };
+}
+
+// Função construtora para representar uma Jaula
+function Jaula2() {
+  this.animais = [];
+
+  this.adicionarAnimal = function (tipo) {
+    const novoAnimal = new Animal(tipo);
+    this.animais.push(novoAnimal);
+    console.log(`${tipo} adicionado à jaula.`);
+  };
+
+  this.fazerBarulhoDosAnimais = function () {
+    console.log("Barulhos dos animais na jaula:");
+    this.animais.forEach(animal => {
+      animal.fazerBarulho();
+    });
+  };
+}
+
+// Exemplo de composição dinâmica
+const jaula2 = new Jaula2();
+jaula2.adicionarAnimal("Leão");   // Output: Leão adicionado à jaula.
+jaula2.adicionarAnimal("Macaco"); // Output: Macaco adicionado à jaula.
+
+// Executando barulhos dos animais na jaula
+jaula2.fazerBarulhoDosAnimais();
+/* Output:
+Barulhos dos animais na jaula:
+Barulho genérico de Leão
+Barulho genérico de Macaco
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 15")
+
+ //Exemplo 16: Composição dinâminca com Function Constructor, adicionando plugins no sistema.
+
+// Função construtora para representar um Plugin
+function PluginF(nome) {
+  this.nome = nome;
+
+  this.executar = function () {
+    console.log(`Executando o plugin ${this.nome}`);
+  };
+}
+
+// Função construtora para representar um SistemaComPlugins
+function SistemaComPluginsF() {
+  this.plugins = [];
+
+  this.adicionarPlugin = function (plugin) {
+    this.plugins.push(plugin);
+    console.log(`Plugin ${plugin.nome} adicionado ao sistema.`);
+  };
+
+  this.executarPlugins = function () {
+    console.log("Executando todos os plugins:");
+    this.plugins.forEach(plugin => {
+      plugin.executar();
+    });
+  };
+}
+
+// Criando instâncias de plugins
+const plugin1F = new PluginF("Plugin 1");
+const plugin2F = new PluginF("Plugin 2");
+
+// Criando instância do sistema
+const sistemaF = new SistemaComPluginsF();
+
+// Adicionando plugins dinamicamente
+sistemaF.adicionarPlugin(plugin1F); // Output: Plugin Plugin 1 adicionado ao sistema.
+sistemaF.adicionarPlugin(plugin2F); // Output: Plugin Plugin 2 adicionado ao sistema.
+
+// Executando todos os plugins
+sistemaF.executarPlugins();
+/* Output:
+Executando todos os plugins:
+Executando o plugin Plugin 1
+Executando o plugin Plugin 2
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 16")
+
+/*-----------------------------------COMPOSIÇÃO COM OBJETOS LITERAIS------------------------------------------------------*/
+console.log("-----------------------------------COMPOSIÇÃO COM OBJETOS LITERAIS----------------------------------------")
+
+//Exemplo 17: "Compondo um carro, com Objetos Literais".
+
+// Objeto literal Radio
+const RadioOL = {
+  frequencia: "",
+  ligar() {
+    console.log("Rádio ligado na " + this.frequencia);
+  },
+  desligar() {
+    console.log("Rádio desligado");
+  }
+};
+
+// Objeto literal Motor
+const MotorOL = {
+  tipo: "",
+  ligar() {
+    console.log(`Motor ${this.tipo} ligado`);
+  },
+  desligar() {
+    console.log(`Motor ${this.tipo} desligado`);
+  }
+};
+
+// Objeto literal Carro utilizando composição
+const CarroOL = {
+  marca: "",
+  modelo: "",
+  motor: Object.create(MotorOL), // Composição: Carro possui um Motor
+  radio: Object.create(RadioOL), // Composição: Carro possui um Rádio
+
+  ligarCarro() {
+    console.log(`${this.marca} ${this.modelo} ligado.`);
+    this.motor.ligar(); // Delegando a responsabilidade de ligar ao Motor
+    this.radio.ligar(); // Delegando a responsabilidade de ligar ao Rádio
+  },
+
+  desligarCarro() {
+    console.log(`${this.marca} ${this.modelo} desligado.`);
+    this.motor.desligar(); // Delegando a responsabilidade de desligar ao Motor
+    this.radio.desligar(); // Delegando a responsabilidade de desligar ao Rádio
+  }
+};
+
+// Configurando os objetos
+RadioOL.frequencia = "FM";
+MotorOL.tipo = "V8";
+CarroOL.marca = "Toyota";
+CarroOL.modelo = "Corolla";
+
+// Exemplo de uso
+CarroOL.ligarCarro();
+/* OUTPUT:
+Toyota Corolla ligado.
+Motor V8 ligado
+Rádio ligado na FM
+*/
+CarroOL.desligarCarro();
+/* OUTPUT:
+Toyota Corolla desligado.
+Motor V8 desligado
+Rádio desligado
+*/
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 17")
+
+
+//Exemplo 18:  Composição de GUI (Interface Gráfica do Usuário) Com Objeto Literal.
+
+// Objeto literal Button
+const ButtonOL = {
+  click() {
+    console.log("Button clicked");
+  }
+};
+
+// Objeto literal TextBox
+const TextBoxOL = {
+  input(value) {
+    console.log(`Entered value: ${value}`);
+  }
+};
+
+// Objeto literal Form utilizando composição
+const FormOL = {
+  button: Object.create(ButtonOL), // Composição: Form possui um Button
+  textBox: Object.create(TextBoxOL), // Composição: Form possui um TextBox
+
+  submit() {
+    this.button.click();
+    this.textBox.input("User input");
+    console.log("Form submitted");
+  }
+};
+
+// Exemplo de uso
+FormOL.submit();
+/* Output:
+Button clicked
+Entered value: User input
+Form submitted
+*/
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 18")
+
+/*-----------------------COMPOSIÇÃO SEM INSTANCIAR UM OBJETO DENTRO DE OUTRO-----------------------------OBJETO LITERAL*/
+console.log("------------------COMPOSIÇÃO SEM INSTANCIAR UM OBJETO DENTRO DE OUTRO----------------------OBJETO LITERAL")
+
+//Exemplo 19: Composição com Objeto Literal, SEM instanciar um Objeto dentro de outro.
+
+// Objeto literal Motor
+const motorNLLiteral = {
+  tipo: "",
+  ligar() {
+    console.log(`Motor ${this.tipo} ligado`);
+  },
+  desligar() {
+    console.log(`Motor ${this.tipo} desligado`);
+  }
+};
+
+// Objeto literal Carro sem composição interna
+const carroNLLiteral = {
+  motor: {}, // Composição Externa: Carro possui uma referência a um Motor externo
+  ligarCarro() {
+    console.log('Carro ligado.');
+    this.motor.ligar();
+  }
+};
+
+// Configurando os objetos
+motorNLLiteral.tipo = "V8";
+carroNLLiteral.motor = Object.create(motorNLLiteral);
+
+// Exemplo de uso
+carroNLLiteral.ligarCarro(); // Output: Carro ligado. Motor V8 ligado
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 19")
+//Exemplo 20:  Composição com Objeto Literal, SEM instanciar um Objeto dentro da outro, Composição de alarme.
+
+// Objeto literal Sensor
+const sensorLiteral = {
+  detectar() {
+    console.log('Sensor detectou algo.');
+  }
+};
+
+// Objeto literal Alarme com composição externa
+const alarmeLiteral = {
+  acionar(sensor) {
+    console.log('Alarme acionado.');
+    sensor.detectar();
+  }
+};
+
+// Configurando os objetos
+const sensorDeMovimentoLiteral = Object.create(sensorLiteral);
+const sistemaDeAlarmeLiteral = Object.create(alarmeLiteral);
+
+// Exemplo de uso
+sistemaDeAlarmeLiteral.acionar(sensorDeMovimentoLiteral);
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 20")
+
+//Exemplo 21: 
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 21")
+//Exemplo 22: 
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+console.log("-----------------------------------------------------------------------------------------------------Exemplo 22")
