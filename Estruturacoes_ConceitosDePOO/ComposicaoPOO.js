@@ -8,7 +8,7 @@
 *COPOSIÇÃO VS HERANÇA.
 *COMPOSIÇÃO COM CLASS CONSTRUCTOR:
   •COM INSTANCIAMENTO DENTRO DA CLASSE.
-  └EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA.
+  └EXEMPLOS 1 À 4 - COMPOSIÇÃO COM CLASSE DENTRO DE OUTRA. 
   •SEM INSTANCIAR DENTRO DA CLASSE.
   └EXEMPLOS 5 À 8 - COMPOSIÇÃO SEM CLASSES DENTRO DE OUTRA.
   •COMPOSIÇÃO DINÂMICA.
@@ -23,9 +23,12 @@
   └EXEMPLOS 15 À 16 - COMPOSIÇÃO DINÂMICA.
 
 *COMPOSIÇÃO COM NOTAÇÃO LITERAL:
- -
- -
- -
+  •COM INSTANCIAMENTO DENTRO DO OBJETO.
+  └EXEMPLOS 17 À 18 - COMPOSIÇÃO COM OBJETO DENTRO DE OUTRO.
+  •SEM INSTANCIAR DENTRO DO OBJETO.
+  └EXEMPLOS 19 À 20 - COMPOSIÇÃO SEM OBJETOS DENTRO DE OUTRO.
+  •COMPOSIÇÃO DINÂMICA.
+  └EXEMPLOS 21 À 22 - COMPOSIÇÃO DINÂMICA.
 */
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -873,7 +876,7 @@ function Jaula2() {
   this.animais = [];
 
   this.adicionarAnimal = function (tipo) {
-    const novoAnimal = new Animal(tipo);
+    const novoAnimal = new Animal2(tipo);
     this.animais.push(novoAnimal);
     console.log(`${tipo} adicionado à jaula.`);
   };
