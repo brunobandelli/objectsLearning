@@ -1,23 +1,23 @@
 /*Encapsulamento*/
 
 /*
-O uso do símbolo # para criar propriedades privadas oferece uma maneira mais segura de encapsular dados em uma classe, 
-tornando essas propriedades inacessíveis de fora da classe, o que ajuda a garantir a integridade e a segurança dos dados.
+O encapsulamento refere-se à prática de ocultar detalhes internos da implementação de um objeto e 
+restringir o acesso direto a certos componentes. 
+Isso é alcançado por meio da criação de membros privados, como propriedades e métodos, que não podem ser acessados fora da classe.
 
-Antigamente, era comum usar o caractere sublinhado _ como uma convenção para indicar propriedades privadas. 
-No entanto, essa prática era principalmente simbólica e não fornecia uma proteção real contra o acesso externo. 
-O sublinhado servia principalmente para comunicar a outros desenvolvedores que se tratava de uma propriedade privada.
+O uso do símbolo # para criar propriedades e metodos privados oferece uma maneira mais segura de encapsular dados em uma classe, 
+tornando essas propriedades e metodos inacessíveis de fora da classe, o que ajuda a garantir a integridade e a segurança dos dados.
 
-É importante observar que o símbolo # é projetado para criar campos de classe privados e não pode ser aplicado a métodos. 
-Para métodos privados, a convenção mais comum é usar o sublinhado _ como prefixo, 
-mas tenha em mente que isso é uma prática de nomenclatura e não fornece proteção real contra acesso externo.
+É importante destacar que o símbolo # é específico para classes em JavaScript e 
+não pode ser utilizado em funções construtoras ou objetos literais. 
+Nestes casos, a convenção do sublinhado _ ainda é comumente empregada,
+servindo apenas para comunicar a outros desenvolvedores a natureza privada da propriedade ou método. 
+No entanto essa prática é apenas simbólica e não fornece uma proteção real contro acesso externo, 
+enquanto o Simbolo # oferece um verdadeiro encapsulamento tornando propriedades e metodos inacessiveis a partir do exterior da calsse.
 
-Em resumo, a principal diferença entre o uso de sublinhados _ e o símbolo #:
-Os sublinhados são uma convenção que indica que uma propriedade é considerada privada,mas não impede o acesso direto a ela.
-Enquanto o símbolo # oferece uma verdadeira encapsulação, tornando as propriedades de classe inacessíveis a partir do exterior da classe."
 */
 
-//Exemplo 1: Encapsulamento com #
+//Exemplo 1: Encapsulamento de propriedades de metodos em classes, usando #.
 
 class PessoaComCerquilha {
     #nome; // Propriedade privada
@@ -25,20 +25,30 @@ class PessoaComCerquilha {
     constructor(nome) {
       this.#nome = nome;
     }
+
+    #metodoPrivado(){  //Metodo Privado
+      console.log("Metodo Privado")
+    }
   
+    letsPlay(){
+      this.#metodoPrivado();
+    }
     getNome() {
       return this.#nome;
     }
   }
   
   const pessoa2 = new PessoaComCerquilha("Bob");
-//   console.log(pessoa2.#nome); // Isso gera um erro, pois #nome é privado
-  console.log(pessoa2.getNome()); // Acesso através de método (recomendado)
-  
 /* 
-O uso de # torna a propriedade #nome verdadeiramente privada e inacessível fora da classe.
-Sendo possivel acessar apenas de forma indireta através de um metodo, como nesse caso: getNome().
+Desta maneira ambos geram erro, pois a propriedade e o metodo são privados
+// console.log(pessoa2.#nome); 
+// pessoa2.#metodoPrivado(); 
 */
+// Recomendado: Acessos de forma indireta através de método : 
+console.log(pessoa2.getNome()); 
+pessoa2.letsPlay()
+  
+
 
 console.log("----------------------------------------------------------------------------------------------------------1")
 /*----------------------------------------------------------------------------------------------------------------------*/
