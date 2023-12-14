@@ -1,4 +1,4 @@
-/*Encapsulamento*/
+/*Encapsulamento /e com Getters e Setters*/
 
 /*
 O encapsulamento refere-se à prática de ocultar detalhes internos da implementação de um objeto e 
@@ -53,25 +53,113 @@ pessoa2.letsPlay()
 console.log("----------------------------------------------------------------------------------------------------------1")
 /*----------------------------------------------------------------------------------------------------------------------*/
 
+//Exemplo 2: Encapsulamento com Herança.
+
+
+class Vehicle {
+  #speed;
+
+  constructor(speed) {
+      this.#speed = speed;
+  }
+
+  getSpeed() {
+      return this.#speed;
+  }
+
+  setSpeed(speed) {
+      this.#speed = speed;
+  }
+}
+
+class Car extends Vehicle {
+  #accelerate() {
+      // Acessando a propriedade #speed através do método setSpeed da classe base
+      this.setSpeed(super.getSpeed() + 10);
+  }
+
+  accelerateAndLog() {
+      this.#accelerate();
+      console.log(`Car speed: ${this.getSpeed()}`);
+  }
+}
+
+const myCar = new Car(50);
+myCar.accelerateAndLog();  // Saída: Car speed: 60
+
+
+
+console.log("----------------------------------------------------------------------------------------------------------2")
+/*----------------------------------------------------------------------------------------------------------------------*/
+
+//Exemplo 3: Encapsulamento com Composição.
+
+
+class MotorVeiculo {
+  ligar() {
+      console.log('Motor ligado.');
+  }
+
+  desligar() {
+      console.log('Motor desligado.');
+  }
+}
+
+class CarroVeiculo {
+  #motor;
+
+  constructor() {
+      this.#motor = new MotorVeiculo();
+  }
+
+  ligar() {
+      this.#motor.ligar();
+      console.log('Carro em movimento.');
+  }
+
+  desligar() {
+      this.#motor.desligar();
+      console.log('Carro parado.');
+  }
+}
+
+// Exemplo de uso
+const meuCarroVeiculo = new CarroVeiculo();
+
+meuCarroVeiculo.ligar();  // Ligar o carro e começar a se movimentar
+meuCarroVeiculo.desligar();  // Desligar o carro e parar
+
+
+console.log("----------------------------------------------------------------------------------------------------------3")
+/*----------------------------------------------------------------------------------------------------------------------*/
+
 
 /* GETTERS E SETTERS*/
 
 /*
-Getters e setters são métodos especiais em classes ou 
-objetos que permitem controlar o acesso e a modificação de propriedades. 
-Eles são usados para encapsular o acesso a dados e realizar ações específicas antes ou depois de ler ou 
-gravar valores em uma propriedade. Em JavaScript, você pode usar getters e 
-setters para criar uma camada de abstração sobre as propriedades de um objeto, 
-garantindo assim uma manipulação segura e consistente dos dados.
+Getters e setters são métodos especiais em uma classe que são usados para acessar e modificar propriedades privadas. 
+Eles são frequentemente associados a propriedades, 
+mas podem ser usados de maneira mais ampla para fornecer acesso e controle específicos sobre os dados da classe, 
+incluindo o acesso a métodos privados.
+
 
 Getters: 
-Um getter é um método que permite a leitura de uma propriedade de um objeto como se fosse uma propriedade comum. 
-Ele é definido usando a palavra-chave get seguida do nome da propriedade desejada. 
+Um getter é um método que permite recuperar o valor de uma propriedade privada. 
+Eles são definidos usando a palavra-chave get. 
+Os getters são especialmente úteis quando você deseja realizar alguma lógica antes de retornar o valor.
 Um getter é uma função que não recebe parâmetros. 
+
+
+Setters:
+Um setter é um método que permite modificar o valor de uma propriedade privada. 
+Eles são definidos usando a palavra-chave set. 
+Os setters são úteis quando você precisa realizar alguma validação ou lógica antes de atribuir um novo valor.
+Um setter é uma função que não recebe parâmetros. 
+
 Veja um exemplo:
 */
 
-//Exemplo 2: Encapsulamento com Getters
+//Exemplo 4: Encapsulamento com Getters
 
 class Pessoa {
     #nome;
@@ -92,10 +180,10 @@ class Pessoa {
   const pessoa = new Pessoa("Alice", 30);
   console.log(`Nome: ${pessoa.nome} e idade: ${pessoa.idade}`); // Chama o getter nome
   
-console.log("----------------------------------------------------------------------------------------------------------2")
+console.log("----------------------------------------------------------------------------------------------------------4")
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-//Exemplo 3: Encapsulamento com Setters e Getters
+//Exemplo 5: Encapsulamento com Setters e Getters
 
 class PessoaDois {
     #nome;
@@ -113,9 +201,11 @@ class PessoaDois {
   }
   
   const pessoaDoias = new PessoaDois("Alice");
+  //Obtendo o nome com o getter
   console.log(pessoaDoias.nome); // "Alice"
   
-  pessoaDoias.nome = "Bob"; // Usando o setter para definir o nome
+  // Usando o setter para definir o nome
+  pessoaDoias.nome = "Bob";
   console.log(pessoaDoias.nome); // "Bob"
   
 /*
@@ -155,10 +245,10 @@ Você pode usar getters e setters para controlar quem pode acessar e modificar d
 aplicando lógica de controle de acesso.
 */
 
-console.log("----------------------------------------------------------------------------------------------------------3")
+console.log("----------------------------------------------------------------------------------------------------------5")
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-//Exemplo 4: Encapsulamento usando Getters e Setters
+//Exemplo 6: Encapsulamento usando Getters e Setters
 
 class Retangulo {
     #comprimento;
@@ -190,5 +280,5 @@ class Retangulo {
   console.log(retangulo.area); // 48
   
 
-console.log("----------------------------------------------------------------------------------------------------------4")
+console.log("----------------------------------------------------------------------------------------------------------6")
 /*------------------------------------------------------------------------------------------------------------------------*/
