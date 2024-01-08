@@ -12,7 +12,7 @@ mas é possível simular esse conceito.
 
 class Mercado {
     constructor(produto){
-        //Assim a classe se tornará abstrata, não sendo possivel instancia-lá.
+        //Tornando a classe em abstrata, não sendo possivel instancia-lá.
         if(new.target === Mercado){ //Ou você pode optar pela maneira antiga: this.constructor === Veiculo, porém a atual é mais confiavel.
             throw new TypeError("Mercado é uma classe abstrata e não pode ser instanciada diretamente.")
         }
@@ -39,7 +39,7 @@ pratileira.localizacao() //Output: O produto laranja está localizado na pratile
 
 
 /*
-Diferente formas de verificar a identidade do construtor:
+Formas de verificar a identidade do construtor:
 
 •new.target === ClassAbstract
 O operador new.target é uma referência ao construtor chamado. Ele retorna undefined fora de uma função chamada com new.
@@ -119,65 +119,65 @@ console.log("-------------------------------------------------------------------
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 
-//Exemplo 3: Abstração com classe, com metodo e propriedade obrigatórios.
+//Exemplo 3: Abstração com classe usando metodo, propriedade obrigatórios em classes derivadas e metodo não obrigatório em classe derivada.
 
-class Veiculo {
-    constructor(marca, ano) {
-      //Assim a classe se tornará abstrata, não sendo possivel instancia-lá.
-      if (new.target === Veiculo) { 
-        throw new TypeError("Veiculo é uma classe abstrata e não pode ser instanciada diretamente.");
-      }
-      this.marca = marca;
-
-  
-    /*
-    *Metodo ou Propriedade Obrigatória dentro da classe derivada:
+/*
+  *Metodo ou Propriedade Obrigatória dentro da classe derivada:
 
     Se você quiser, você pode tornar metodos ou propriedades obrigatórias, 
     Se você deseja garantir que certos métodos e propriedades sejam obrigatoriamente implementados nas classes derivadas, 
     é comum realizar essa verificação dentro do construtor. 
     Isso permite que a verificação seja feita no momento da criação da instância da classe, 
     assegurando que os métodos obrigatórios estejam presentes.
+
+*/
+
+
+/* 
+  *Método NÃO obrigaórios, porém necessários em classes derivadas quando chamado pela instância:
+
+    Essa maneira NÃO é obrigatorio implementar o metodo dentro da classe, 
+    porem não será possivel chamar a função pela instancia.
+    dessa maneira não tem necessidade de implementar o metodo dentro do constructor.
+    Portanto se torna necessario apenas se for utilizar o metodo da classe Pai.
+
+*/
+
+class Veiculo {
+    constructor(marca, ano) {
+      //Assim a classe se tornará abstrata, não sendo possivel instancia-lá.
+      if (new.target === Veiculo) { //Ou você pode optar pela maneira antiga: this.constructor === Veiculo, porém a atual é mais confiavel.
+        throw new TypeError("Veiculo é uma classe abstrata e não pode ser instanciada diretamente.");
+      };
+      this.marca = marca;
+ 
+  
     
-    Como abaixo:
-    */
-
-    //Verificando se o método e propriedade foi implementada na classe derivada
-
-      //Metodo se torna obrigatório dentro da classe derivada.
-      if (this.acelerar === undefined) {
+/* *Metodo e Propriedade Obrigatórios dentro da classe derivada: */
+    //Metodo obrigatório dentro da classe derivada.
+      if (this.acelerar === undefined) { //Verificando se o método foi implementada na classe derivada
         throw new TypeError("É obrigatório implementar o método acelerar.");
       }
   
-      //Propriedade se torna obrigatório dentro da classe derivada.
-      if (ano === undefined) {
+    //Propriedade obrigatória dentro da classe derivada.
+      if (ano === undefined) { //Verificando se a propriedade foi implementada na classe derivada
         throw new TypeError("É obrigatório fornecer a propriedade 'ano'.");
       }
   
       this.ano = ano;
 
-      /*
-
-      */
-
     }
 
-    /* 
-    *Método Necessário apenas se for chama-lo pela instância:
-
-    Dessa maneira NÃO é obrigatorio implementar o metodo dentro da classe, 
-    porem não será possivel chamar a função pela instancia.
-    dessa maneira não tem necessidade de implementar o metodo dentro do constructor.
-    Portanto se torna necessario apenas se for utilizar o metodo da classe Pai.
-    Como abaixo:
-    */
-   
-    //Método se torna necessário apenas se for chama-lo na instância.
+     
+/* *Método NÃO obrigatório, necessário apenas se for chama-lo pela instância: */
+    //Método necessário dentro da classe derivada apenas se for chamado pela instância.
     emitirSom() { 
         throw new Error("Método abstrato não implementado");
     }
   }
+
   
+/*Classe derivada*/
   class Automotivo extends Veiculo {
     constructor(marca, modelo, ano) {
       super(marca, ano);
@@ -189,11 +189,16 @@ class Veiculo {
       return `${this.marca} ${this.modelo} (${this.ano}) acelerando!`;
     }
 
+    //Não é obrigatório a implementação desse metodo abaixo em todas as classes derivadas, porem se torná necessário caso utilização pela instância sua implementação.
     emitirSom(){
         console.log("Vruuuuuuum")
     }
   }
   
+
+
+
+
   // Exemplo de uso
   
   // Tentativa de instanciar a classe abstrata (gerará um erro)
@@ -205,7 +210,7 @@ class Veiculo {
   // Tentativa de instanciar a classe derivada sem implementar o metodo 'acelerar' (gerará um erro)
   // const meuVeiculo = new Automotivo("Toyota", "Corolla", 2023); // Erro: É obrigatório implementar o método acelerar.
 
-  // Tentativa de instanciar a classe derivada sem implementar o metodo 'emitirSom' (NÃO gerará um erro, porém se tentar chamar o método sem intanciar SIM)
+  // Tentativa de instanciar a classe derivada sem implementar o metodo 'emitirSom' (NÃO gerará um erro, porém se tentar chamar o método sem implementar SIM)
   // meuAutomotivo.emitirSom(); // Erro: Método abstrato não implementado.
   
   // Criando uma instância da classe derivada
@@ -316,74 +321,58 @@ c3.info()
 console.log("----------------------------------------------------------------------------------------------------------4")
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-/*
-*********************************
-CONTINUAR PESQUISA, A RESPEITO DE ABSTRAÇÃO EM FUNCTION CONSTRUCTOR.
-E COMO FUNCIONA PARA POR METODOS E PROPRIEDADES OBRIGATORIAS OU NECESSARIAS ASSIM COMO CLASSES.
-*********************************
-*/
+/*Abstração com Function Constructor*/
 
+//Exemplo 5: Abstração com Function Construction com metodo e propriedade obrigatório.
 
-//Exemplo 5: Abstração com Function Construction.
-
-// Função construtora "abstrata"
-function VeiculoF(marca) {
-    if (this.constructor === VeiculoF) {
-      throw new TypeError("Veiculo é uma função construtora abstrata e não pode ser instanciada diretamente.");
-    }
-  
-    this.marca = marca;
-  
-    // Método abstrato
-    this.acelerar = function() {
-      throw new Error("Método abstrato 'acelerar' não implementado.");
-    };
-  
-    // Método abstrato
-    this.freiar = function() {
-      throw new Error("Método abstrato 'freiar' não implementado.");
-    };
+function AnimalF(name) {
+  //Abstraindo a classe
+  if (this.constructor === AnimalF) {
+    throw new Error("Não pode instanciar uma clase abstrada");
   }
-  
-  // Função construtora derivada
-  function CarroF(marca, modelo) {
-    // Chama o construtor da classe pai (Veiculo)
-    VeiculoF.call(this, marca);
-    
-    this.modelo = modelo;
-  
-    // Implementa o método abstrato acelerar
-    this.acelerar = function() {
-      console.log(`O carro ${this.marca} ${this.modelo} está acelerando.`);
-    };
-  
-    // Implementa o método abstrato freiar
-    this.freiar = function() {
-      console.log(`O carro ${this.marca} ${this.modelo} está freando.`);
-    };
+
+  this.name = name;
+
+  //Tornando a propriedade obrigatória a implementação na classe derivada
+  if(this.name === undefined){ //Verificando se o método foi implementada na classe derivada.
+    throw new Error("É obrigatório implementar a propriedade 'name'.");
   }
-  
-  // Criando uma instância de Carro
-  const meuCarroF = new CarroF('Toyota', 'Corolla');
-  
-  // Chamando métodos da classe base
-  console.log(meuCarroF.marca); // Saída: Toyota
-  
-  // Chamando métodos da classe derivada
-  meuCarroF.acelerar(); // Saída: O carro Toyota Corolla está acelerando.
-  meuCarroF.freiar();   // Saída: O carro Toyota Corolla está freando.
-  
-  // Tentativa de instanciar a classe base (Veiculo)
-  // Isso lançará um erro
-  
-  try {
-    const veiculoF = new VeiculoF('Desconhecida');
-  } catch (error) {
-    console.error(error.message); // Saída: Veiculo é uma função construtora abstrata e não pode ser instanciada diretamente.
+
+  //Tornando o método obrigatório a implementação na classe derivada
+  this.makeSound = function () { //Verificando se a propriedade foi implementada na classe derivada.
+    throw new Error("Método 'makeSound' deve ser implementado na classe derivada");
+  };
+
+  //Método comum
+  this.comando = function(){ //Não precisa implementar esse metodo na classe derivada.
+    console.log("Sentar!")
   }
-  
+
+}
+
+function Dog(breed, name) {
+  AnimalF.call(this, name);
+  this.breed = breed;
+
+  this.makeSound = function () {
+    return `O ${this.breed} chamado ${name} fez Woof! e sentou.`;
+  };
+}
+
+// Tentativa de criar uma instância da classe Animal resultará em um erro
+// const animalF = new AnimalF("Generic Animal"); // Erro: Não pode instanciar uma clase abstrada.
+
+// Tentativa de instanciar a classe derivada sem fornecer a propriedade 'name' resultará em um erro
+// const dog = new Dog("Golden Retriever"); // Erro: É obrigatório implementar a propriedade 'name'.
+
+// Tentativa de chamar o método 'makeSound' sem implementar na classe derivada resultará em um erro
+// console.log(dog.makeSound()); // Erro: Método 'makeSound' deve ser implementado na classe derivada.
+
+// Criar uma instância da classe derivada Dog 
+const dog = new Dog( "Golden Retriever", "Buddy");
+dog.comando(); // Output: Sentar!
+console.log(dog.makeSound()); // Output: O Golden Retriever chamado Buddy fez Woof!
 
 
-console.log("----------------------------------------------------------------------------------------------------------5")
+console.log("----------------------------------------------------------------------------------------------------------6")
 /*------------------------------------------------------------------------------------------------------------------------*/
-
