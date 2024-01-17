@@ -1,5 +1,7 @@
 /*Encapsulamento /e com Getters e Setters*/
 
+/* Encapsulamento com Class Constructor e Function Constructor é igual, porem tem um pequeno detalhe, leia abaixo"
+
 /*
 O encapsulamento refere-se à prática de ocultar detalhes internos da implementação de um objeto e 
 restringir o acesso direto a certos componentes. 
