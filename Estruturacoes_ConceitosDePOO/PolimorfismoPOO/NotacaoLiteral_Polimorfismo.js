@@ -15,64 +15,113 @@ protótipos, permitindo que diferentes instâncias respondam ao mesmo método, m
 
 
 
-//Exemplo 1: 
-
+//Exemplo 1: Polimorfismo simples com notação literal.
 
 // Objeto base
-const formaGeometricaBase = {
-    calcularArea: function() {
-      throw new Error("Método calcularArea não implementado");
+const Veiculo = {
+    fazerBarulho: function() {
+      throw new Error("Método fazerBarulho não implementado");
     }
   };
   
-  // Objeto Círculo
-  const circulo = {
-    raio: 5,
-    // Implementação específica de calcularArea para Círculo
-    calcularArea: function() {
-      return Math.PI * Math.pow(this.raio, 2);
+  // Objeto Carro
+  const Carro = {
+    //Sobrescrevendo o método fazerBarulho
+    fazerBarulho: function() {
+      return "Vrum vrum!";
     }
   };
   
-  // Objeto Quadrado
-  const quadrado = {
-    lado: 4,
-    // Implementação específica de calcularArea para Quadrado
-    calcularArea: function() {
-      return Math.pow(this.lado, 2);
+  // Objeto Bicicleta
+  const Bicicleta = {
+    //Sobrescrevendo o método fazerBarulho
+    fazerBarulho: function() {
+      return "Ring ring!";
     }
   };
-  
-  // Chamando o método calcularArea em objetos diferentes
-  console.log("Área do Círculo:", circulo.calcularArea());
-  console.log("Área do Quadrado:", quadrado.calcularArea());
+    
+  // Chamando o método fazerBarulho em objetos diferentes
+  console.log("Barulho do Carro:", Carro.fazerBarulho()); //Output: Barulho do Carro: Vrum vrum!
+  console.log("Barulho da Bicicleta:", Bicicleta.fazerBarulho()); //Output: Barulho da Bicicleta: Ring ring!
 
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 1")
 
-//Exemplo 2: 
+//Exemplo 2: Animal em falar. Polimorfismo simples com notação literal.
 
+// Objeto base
+const Animal = {
+    falar: function() {
+      return "Som genérico de animal";
+    }
+  };
+  
+  // Objeto Cachorro, sobrescrevendo o método falar
+  const Cachorro = {
+    falar: function() {
+      return "Au au!";
+    }
+  };
+  
+  // Objeto Gato, sobrescrevendo o método falar
+  const Gato = {
+    falar: function() {
+      return "Miau!";
+    }
+  };
+  
+  // Objeto Pássaro, sobrescrevendo o método falar
+  const Passaro = {
+    falar: function() {
+      return "Piu piu!";
+    }
+  };
+  
+  // Chamando o método falar em objetos diferentes
+  console.log("Som do Cachorro:", Cachorro.falar());
+  console.log("Som do Gato:", Gato.falar());
+  console.log("Som do Pássaro:", Passaro.falar());
+  
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 2")
 
-//Exemplo 3: 
+//Exemplo 3: Personagem em atacar. Polimorfismo simples com notação literal.
+
+// Objeto base
+const Personagem = {
+    atacar: function() {
+      return "Ataque genérico";
+    }
+  };
+  
+  // Objeto Guerreiro, sobrescrevendo o método atacar
+  const Guerreiro = {
+    atacar: function() {
+      return "Golpe de espada!";
+    }
+  };
+  
+  // Objeto Mago, sobrescrevendo o método atacar
+  const Mago = {
+    atacar: function() {
+      return "Bola de fogo!";
+    }
+  };
+  
+  // Objeto Arqueiro, sobrescrevendo o método atacar
+  const Arqueiro = {
+    atacar: function() {
+      return "Disparo de flechas!";
+    }
+  };
+  
+  // Chamando o método atacar em personagens diferentes
+  console.log("Ataque do Guerreiro:", Guerreiro.atacar());
+  console.log("Ataque do Mago:", Mago.atacar());
+  console.log("Ataque do Arqueiro:", Arqueiro.atacar());
+  
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
 
-//Exemplo 4: 
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
-
-//Exemplo 5: 
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
-
-//Exemplo 6: 
-
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 6")

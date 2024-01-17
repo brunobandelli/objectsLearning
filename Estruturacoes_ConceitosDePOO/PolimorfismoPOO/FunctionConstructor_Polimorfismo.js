@@ -177,7 +177,7 @@ function Notificacao(titulo, mensagem) {
  Adicionar ClasseDerivada.prototype.constructor = ClasseDerivada; restaura a referência ao construtor da ClasseDerivada,
  garantindo que a propriedade constructor no objeto de protótipo aponte para a função construtora correta,
  deixando o código mais integro e consistente.
- 
+
  Isso pode ser útil em alguns casos, especialmente se você planeja verificar o construtor de uma instância para determinar sua origem.
 
  Em resumo, enquanto não é estritamente necessário, incluir ClasseDerivada.prototype.constructor = ClasseDerivada; 
@@ -190,18 +190,3 @@ function Notificacao(titulo, mensagem) {
 /*------------------------------------------------------------------------------------------------------------------------*/
 console.log("-----------------------------------------------------------------------------------------------------Exemplo 3")
 
-//Exemplo 4: 
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 4")
-
-//Exemplo 5: 
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 5")
-
-//Exemplo 6: 
-
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-console.log("-----------------------------------------------------------------------------------------------------Exemplo 6")
